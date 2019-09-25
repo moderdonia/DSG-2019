@@ -29,23 +29,50 @@ void GameLogic::processInput()
 
 		case 'a':
 			//Do whatever needs to be done when 'a' is pressed
-
+			m_player1.moveLeft();
 			break;
 		case 's':
 			//Do whatever needs to be done when 's' is pressed
+			m_player1.moveDown();
 			break;
-		//...
-		//...
-		//...
+		case 'w':
+			m_player1.moveUp();
+			break;
+		case 'd':
+			m_player1.moveRight();
+			break;
+		case '4':
+			m_player2.moveLeft();
+			break;
+		case '8':
+			m_player2.moveUp();
+			break;
+		case '6':
+			m_player2.moveRight();
+			break;
+		case '2':
+			m_player2.moveDown();
+			break;
 		case 27:
 			//'Esc' key pressed. Exit the game
+			esc = true;
 			return;
 		}
 	}
 }
 
 bool GameLogic::gameHasEnded()
-{
-	//TODO: We need to check it the game has ended
+{	
+	//si quedan monedas no acaba
+	//if () {
+	//	return false;
+	//}
+	//si no quedan monedas
+	/*else if () {
+		return true;
+	}
+	else if (esc) {
+		return true;
+	}*/
 	return false;
 }

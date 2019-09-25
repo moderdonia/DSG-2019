@@ -34,17 +34,17 @@ World::World(int height, int width)
 	//...
 	//crear las celdas en si 
 	all = height * width;
-	//for (int i = 0; i < height; i ++) {
-	//	for (int j = 0; j < width; j++) {			
-	//		if (j == 3) {
-	//			cout << '-' + '\n';
-	//		}
-	//		else {
-	//			cout << '-';
-	//		}
-	//	}
-	//	cout << '-';
-	//}
+	for (int i = 0; i < height; i ++) {
+		for (int j = 0; j < width; j++) {			
+			if (j == width-1) {
+				cout << '-' + '\n';
+			}
+			else {
+				cout << '-';
+			}
+		}
+		cout << '-';
+	}
 
 }
 
@@ -69,7 +69,7 @@ void World::draw()
 void World::drawMaze()
 {
 	System::clear();
-
+	
 	//TODO: -draw the maze: walls and each of the cells
 	// escribir por dentro
 	
