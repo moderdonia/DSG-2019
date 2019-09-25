@@ -157,6 +157,11 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\TextGame\GameLogic.cpp" />
+    <ClCompile Include="..\TextGame\Player.cpp" />
+    <ClCompile Include="..\TextGame\System.cpp" />
+    <ClCompile Include="..\TextGame\Timer.cpp" />
+    <ClCompile Include="..\TextGame\World.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

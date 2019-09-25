@@ -10,6 +10,8 @@ class World
 	vector<char> m_cells;
 	int all;
 	void drawMaze();
+	string maze;
+	string sampleMaze;
 
 public:
 	World(string nameFile);

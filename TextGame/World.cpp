@@ -11,6 +11,8 @@
 #include <stdio.h>
 #include <istream>
 
+using namespace std;
+
 World::World(std::string nameFile)
 {
 	System::hideCursor();
@@ -20,30 +22,52 @@ World::World(std::string nameFile)
 
 	//TODO: initalize everything else
 	//...
+	/*
+		ifstream inputFile("example.txt", fstream::in);
+		if(inputFile.is_open())
+		{
+			for (int i = 0; i< 9; i++)
+			{
+				inputFile >> datos[i];
+				inputFile >> delimiter;
+			}
+			inputFile.close();
+		}
+	*/
 }
 
 World::World(int height, int width)
 {
 	System::hideCursor();
-
+	all = height * width;
+	vector<char> m_cells = vector<char>(all);
+	maze = "";
+	sampleMaze = "#,#,#,#,#,#,1, ,?,#,#,?, , ,#,#,?,#,2,#,#,#,#,#,#";
 	//initialize the timer. We want to display the time elapsed since the game began in draw()
 	m_timer.start();
 
-	vector<char> m_cells = vector<char>(all);
+	//m_cells = sampleMaze.spl
+
+	//for (int i = 0; i < sampleMaze.size - 1; i++) {
+
+	//}
+
+	
 	//TODO: initalize everything else
 	//...
 	//crear las celdas en si 
-	all = height * width;
+	
 	for (int i = 0; i < height; i ++) {
 		for (int j = 0; j < width; j++) {			
-			if (j == width-1) {
-				cout << '-' + '\n';
+			if (j == width - 1) {
+				//cout << '-' << '\n';
+				maze += '-' + '\n';
 			}
 			else {
-				cout << '-';
+				//cout << '-';
+				maze += '-';
 			}
 		}
-		cout << '-';
 	}
 
 }
