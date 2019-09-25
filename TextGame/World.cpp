@@ -11,7 +11,6 @@
 #include <stdio.h>
 #include <istream>
 
-
 World::World(std::string nameFile)
 {
 	System::hideCursor();
@@ -23,6 +22,31 @@ World::World(std::string nameFile)
 	//...
 }
 
+World::World(int height, int width)
+{
+	System::hideCursor();
+
+	//initialize the timer. We want to display the time elapsed since the game began in draw()
+	m_timer.start();
+
+	vector<char> m_cells = vector<char>(all);
+	//TODO: initalize everything else
+	//...
+	//crear las celdas en si 
+	all = height * width;
+	//for (int i = 0; i < height; i ++) {
+	//	for (int j = 0; j < width; j++) {			
+	//		if (j == 3) {
+	//			cout << '-' + '\n';
+	//		}
+	//		else {
+	//			cout << '-';
+	//		}
+	//	}
+	//	cout << '-';
+	//}
+
+}
 
 World::~World()
 {
@@ -47,8 +71,9 @@ void World::drawMaze()
 	System::clear();
 
 	//TODO: -draw the maze: walls and each of the cells
-
-
+	// escribir por dentro
+	
+	
 	//we sleep for a while
 	std::this_thread::sleep_for(std::chrono::milliseconds(100));
 }
