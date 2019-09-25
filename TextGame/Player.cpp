@@ -26,3 +26,22 @@ void Player::moveRight()
 void Player::moveLeft()
 {
 }
+
+int Player::getX()
+{
+	return 0;
+}
+
+int Player::getY()
+{
+	return 0;
+}
+
+int Player::getcoin()
+{
+	return 0;
+}
+
+void Player::addcoin()
+{
+}
