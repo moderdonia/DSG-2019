@@ -18,6 +18,7 @@ public:
 	int getY();
 	int getcoin();
 	void addcoin();
+	void setPosition(int x, int y);
 
 };
 
