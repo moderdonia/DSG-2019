@@ -16,7 +16,7 @@ using namespace std;
 World::World(std::string nameFile)
 {
 	System::hideCursor();
-
+	maze = "";
 	//initialize the timer. We want to display the time elapsed since the game began in draw()
 	m_timer.start();
 
@@ -41,7 +41,7 @@ World::World(int height, int width)
 	System::hideCursor();
 	all = height * width;
 	vector<char> m_cells = vector<char>(all);
-	maze = "";
+	
 	sampleMaze = "#,#,#,#,#,#,1, ,?,#,#,?, , ,#,#,?,#,2,#,#,#,#,#,#";
 	//initialize the timer. We want to display the time elapsed since the game began in draw()
 	m_timer.start();
@@ -52,23 +52,39 @@ World::World(int height, int width)
 
 	//}
 
-	
+
 	//TODO: initalize everything else
 	//...
 	//crear las celdas en si 
-	
-	for (int i = 0; i < height; i ++) {
+	sampleMaze.erase(remove(sampleMaze.begin(), sampleMaze.end(), ','), sampleMaze.end());
+	for (int i = 0; i < sampleMaze.size() ; i ++) 
+	{
+		m_cells[i] = sampleMaze.at(i);
+
+	}
+
+	for (int i = 0; i < height * width ; i++ ) 
+	{
+		maze += m_cells[i];
+		if ((i+1)%(width) == 0) {
+			maze += '\n';
+		}
+	}
+
+
+
+	/*for (int i = 0; i < height; i ++) {
 		for (int j = 0; j < width; j++) {			
 			if (j == width - 1) {
-				//cout << '-' << '\n';
+
 				maze += '-' + '\n';
 			}
 			else {
-				//cout << '-';
+
 				maze += '-';
 			}
 		}
-	}
+	}*/
 
 }
 
@@ -89,10 +105,17 @@ void World::draw()
 	std::cout << m_timer.getElapsedTime() << "   ";
 }
 
+bool World::checkMove(int direction, Player player) //0 == left ; 1 == up ; 2 == rigth ; 3 == down
+{
+	return false;
+}
+
 
 void World::drawMaze()
 {
+	
 	System::clear();
+	cout << maze;
 	
 	//TODO: -draw the maze: walls and each of the cells
 	// escribir por dentro
@@ -101,3 +124,4 @@ void World::drawMaze()
 	//we sleep for a while
 	std::this_thread::sleep_for(std::chrono::milliseconds(100));
 }
+

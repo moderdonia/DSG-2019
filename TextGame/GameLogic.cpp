@@ -29,7 +29,8 @@ void GameLogic::processInput()
 
 		case 'a':
 			//Do whatever needs to be done when 'a' is pressed
-			m_player1.moveLeft();
+			m_world.checkMove(0, m_player1);
+			//m_player1.moveLeft();
 			break;
 		case 's':
 			//Do whatever needs to be done when 's' is pressed
@@ -39,7 +40,8 @@ void GameLogic::processInput()
 			m_player1.moveUp();
 			break;
 		case 'd':
-			m_player1.moveRight();
+			m_world.checkMove(2, m_player1);
+			//m_player1.moveRight();
 			break;
 		case '4':
 			m_player2.moveLeft();

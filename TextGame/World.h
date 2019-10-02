@@ -19,4 +19,5 @@ public:
 	~World();
 
 	void draw();
+	bool checkMove(int direction, Player player);
 };
