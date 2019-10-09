@@ -18,7 +18,8 @@ int main()
 
 		gameLogic.processInput();
 	}
-
-    return 0;
+	
+	system("PAUSE");
+	return 0;
 }
 

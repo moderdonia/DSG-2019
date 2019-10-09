@@ -18,6 +18,7 @@ class World
 	int width;
 	int coins1;
 	int coins2;
+	int coins;
 
 public:
 	World(string nameFile);
@@ -27,4 +28,6 @@ public:
 	void draw();
 	bool checkMove(int direction, int numPlayer);
 	string getMaze();
+	int getcoins();
+	int getWinner();
 };

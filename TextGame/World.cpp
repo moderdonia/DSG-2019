@@ -46,6 +46,7 @@ World::World(int height, int width)
 	m_cells = vector<char>(all);
 	coins1 = 0;
 	coins2 = 0;
+	coins = 0;
 	sampleMaze = "#,#,#,#,#,#,1, ,?,#,#,?, , ,#,#,?,#,2,#,#,#,#,#,#";
 	//initialize the timer. We want to display the time elapsed since the game began in draw()
 	m_timer.start();
@@ -70,6 +71,9 @@ World::World(int height, int width)
 		}
 		else if (sampleMaze.at(i) == '2') {
 			pos2 = i;
+		}
+		else if (sampleMaze.at(i) == '?') {
+			coins++;
 		}
 	}
 
@@ -144,6 +148,7 @@ bool World::checkMove(int direction, int numPlayer) //0 == left ; 1 == up ; 2 ==
 	else {
 		if (m_cells[x] == '?') 
 		{
+			coins--;
 			if (numPlayer == 1) 
 			{
 				coins1++;
@@ -187,6 +192,24 @@ string World::getMaze()
 		}
 	}
 	return maze;
+}
+
+int World::getcoins()
+{
+	return coins;
+}
+
+int World::getWinner()
+{
+	if (coins1 > coins2) {
+		return 1;
+	}
+	else if (coins1 < coins2) {
+		return 2;
+	}
+	else {
+		return 0;
+	}
 }
 
 

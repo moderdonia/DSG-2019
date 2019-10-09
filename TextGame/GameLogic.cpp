@@ -3,6 +3,7 @@
 #include "GameLogic.h"
 #include "System.h"
 #include "World.h"
+#include <time.h>
 
 GameLogic::GameLogic(Player& player1, Player& player2, World& world)
 	: m_player1(player1), m_player2(player2), m_world(world)
@@ -57,30 +58,32 @@ void GameLogic::processInput()
 			//m_player2.moveRight();
 			m_world.checkMove(2, 2);
 			break;
-		case '2':
+		case '5':
 			//m_player2.moveDown();
 			m_world.checkMove(3, 2);
 			break;
 		case 27:
 			//'Esc' key pressed. Exit the game
 			esc = true;
-			return;
+		default:
+			gameHasEnded();
+			
 		}
 	}
 }
 
 bool GameLogic::gameHasEnded()
 {	
-	//si quedan monedas no acaba
-	//if () {
-	//	return false;
-	//}
-	//si no quedan monedas
-	/*else if () {
+	System::clear();
+	if (m_world.getcoins() == 0) {
+		if (m_world.getWinner() != 0) {
+			std::cout << "Juego terminado, ha ganado el jugador " << m_world.getWinner() << endl;
+		}
+		else {
+			std::cout << "Juego terminado, ha habido un empate" << endl;
+		}
+
 		return true;
 	}
-	else if (esc) {
-		return true;
-	}*/
 	return false;
 }
