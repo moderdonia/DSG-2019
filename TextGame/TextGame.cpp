@@ -8,7 +8,7 @@
 
 int main()
 {
-	World world(5,5);
+	World world("maze.txt");
 	Player player1, player2;
 	GameLogic gameLogic(player1, player2, world);
 

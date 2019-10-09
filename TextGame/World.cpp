@@ -19,7 +19,9 @@ World::World(std::string nameFile)
 	maze = "";
 	//initialize the timer. We want to display the time elapsed since the game began in draw()
 	m_timer.start();
-	
+	ifstream infile;
+	infile.open(nameFile);
+
 
 	//TODO: initalize everything else
 	//...
