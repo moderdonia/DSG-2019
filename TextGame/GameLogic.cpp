@@ -29,31 +29,37 @@ void GameLogic::processInput()
 
 		case 'a':
 			//Do whatever needs to be done when 'a' is pressed
-			m_world.checkMove(0, m_player1);
 			//m_player1.moveLeft();
+			m_world.checkMove(0, 1);
 			break;
 		case 's':
 			//Do whatever needs to be done when 's' is pressed
-			m_player1.moveDown();
+			//m_player1.moveDown();
+			m_world.checkMove(3, 1);
 			break;
 		case 'w':
-			m_player1.moveUp();
+			//m_player1.moveUp();
+			m_world.checkMove(1, 1);
 			break;
 		case 'd':
-			m_world.checkMove(2, m_player1);
+			m_world.checkMove(2, 1);
 			//m_player1.moveRight();
 			break;
 		case '4':
-			m_player2.moveLeft();
+			//m_player2.moveLeft();
+			m_world.checkMove(0, 2);
 			break;
 		case '8':
-			m_player2.moveUp();
+			//m_player2.moveUp();
+			m_world.checkMove(1, 2);
 			break;
 		case '6':
-			m_player2.moveRight();
+			//m_player2.moveRight();
+			m_world.checkMove(2, 2);
 			break;
 		case '2':
-			m_player2.moveDown();
+			//m_player2.moveDown();
+			m_world.checkMove(3, 2);
 			break;
 		case 27:
 			//'Esc' key pressed. Exit the game

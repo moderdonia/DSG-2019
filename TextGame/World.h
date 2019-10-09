@@ -12,6 +12,12 @@ class World
 	void drawMaze();
 	string maze;
 	string sampleMaze;
+	int pos1;
+	int pos2;
+	int height;
+	int width;
+	int coins1;
+	int coins2;
 
 public:
 	World(string nameFile);
@@ -19,5 +25,6 @@ public:
 	~World();
 
 	void draw();
-	bool checkMove(int direction, Player player);
+	bool checkMove(int direction, int numPlayer);
+	string getMaze();
 };

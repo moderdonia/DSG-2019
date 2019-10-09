@@ -14,11 +14,12 @@
 using namespace std;
 
 World::World(std::string nameFile)
-{
+{	//cell(x,y) = width * y + x para saber la posicion de una casilla en una matriz
 	System::hideCursor();
 	maze = "";
 	//initialize the timer. We want to display the time elapsed since the game began in draw()
 	m_timer.start();
+	
 
 	//TODO: initalize everything else
 	//...
@@ -38,10 +39,13 @@ World::World(std::string nameFile)
 
 World::World(int height, int width)
 {
+	this->height = height;
+	this->width = width;
 	System::hideCursor();
 	all = height * width;
-	vector<char> m_cells = vector<char>(all);
-	
+	m_cells = vector<char>(all);
+	coins1 = 0;
+	coins2 = 0;
 	sampleMaze = "#,#,#,#,#,#,1, ,?,#,#,?, , ,#,#,?,#,2,#,#,#,#,#,#";
 	//initialize the timer. We want to display the time elapsed since the game began in draw()
 	m_timer.start();
@@ -61,17 +65,15 @@ World::World(int height, int width)
 	{
 		m_cells[i] = sampleMaze.at(i);
 
-	}
-
-	for (int i = 0; i < height * width ; i++ ) 
-	{
-		maze += m_cells[i];
-		if ((i+1)%(width) == 0) {
-			maze += '\n';
+		if (sampleMaze.at(i) == '1') {
+			pos1 = i;
+		}
+		else if (sampleMaze.at(i) == '2') {
+			pos2 = i;
 		}
 	}
 
-
+	//getMaze();
 
 	/*for (int i = 0; i < height; i ++) {
 		for (int j = 0; j < width; j++) {			
@@ -93,6 +95,8 @@ World::~World()
 }
 
 
+
+
 void World::draw()
 {
 	drawMaze();
@@ -105,9 +109,84 @@ void World::draw()
 	std::cout << m_timer.getElapsedTime() << "   ";
 }
 
-bool World::checkMove(int direction, Player player) //0 == left ; 1 == up ; 2 == rigth ; 3 == down
+
+bool World::checkMove(int direction, int numPlayer) //0 == left ; 1 == up ; 2 == rigth ; 3 == down
 {
-	return false;
+	int i; //Índice de la casilla del jugador
+	int x; //Índice de la casilla a la que se quiere mover
+
+	if (numPlayer == 1) {
+		i = pos1;
+	}
+	else {
+		i = pos2;
+	}
+
+	switch (direction)
+	{
+	case 0:
+		x = i - 1;
+		break;
+	case 1:
+		x = i - width;
+		break;
+	case 2:
+		x = i + 1;
+		break;
+	case 3:
+		x = i + width;
+		break;
+	}
+
+	if (m_cells[x] == '#' || m_cells[x] == '1' || m_cells[x] == '2') {
+		return false;
+	}
+	else {
+		if (m_cells[x] == '?') 
+		{
+			if (numPlayer == 1) 
+			{
+				coins1++;
+				m_cells[x] = '1';
+				pos1 = x;
+			}
+			else 
+			{
+				coins2++;
+				m_cells[x] = '2';
+				pos2 = x;
+			}
+		}
+		else 
+		{
+			if (numPlayer == 1) 
+			{
+				m_cells[x] = '1';
+				pos1 = x;
+			}
+			else 
+			{
+				m_cells[x] = '2';
+				pos2 = x;
+			}
+		}
+		m_cells[i] = ' ';
+	}
+
+	return true;
+}
+
+string World::getMaze()
+{
+	maze = "";
+	for (int i = 0; i < height * width; i++)
+	{
+		maze += m_cells[i];
+		if ((i + 1) % (width) == 0) {
+			maze += '\n';
+		}
+	}
+	return maze;
 }
 
 
@@ -115,7 +194,7 @@ void World::drawMaze()
 {
 	
 	System::clear();
-	cout << maze;
+	cout << getMaze();
 	
 	//TODO: -draw the maze: walls and each of the cells
 	// escribir por dentro
