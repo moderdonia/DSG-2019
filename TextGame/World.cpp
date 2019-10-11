@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <istream>
 #include <cstdlib>
+#include <windows.h>
 
 using namespace std;
 
@@ -125,6 +126,7 @@ bool World::checkMove(int direction, int numPlayer) //0 == left ; 1 == up ; 2 ==
 		if (m_cells[x] == '?') 
 		{
 			coins--;
+			Beep(900, 50);
 			if (numPlayer == 1) 
 			{
 				coins1++;
@@ -208,6 +210,7 @@ string World::createMaze(int x, int y) {
 	string maze = "";
 	srand(time(0));
 	int r;
+	int counter = 0;
 	bool player1 = false;
 	bool player2 = false;
 	for (int i = 0; i < x; i++) {
@@ -229,16 +232,23 @@ string World::createMaze(int x, int y) {
 				}
 				
 				r = rand()%100;
-				if (r < 20) {
-					maze += "#";
+				if (r < 60) {
+					if (maze[counter+1] != '#' && maze[counter - y + 3] != '#' && maze[counter - y + 1] != '#' && maze[counter - y + 2] != '#') {
+						maze += "#";
+					}
+					else {
+						maze += " ";
+					}
+					
 				}
-				else if (21 < r && r < 60) {
+				else if (61 < r && r < 80) {
 					maze += "?";
 				}
 				else {
 					maze += " ";
 				}
 			}
+			counter++;
 		}
 	}
 

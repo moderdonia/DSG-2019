@@ -8,7 +8,7 @@
 
 int main()
 {
-	World world(10,20);
+	World world(10,10);
 	Player player1, player2;
 	GameLogic gameLogic(player1, player2, world);
 
