@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include <stdio.h>
 #include <istream>
+#include <cstdlib>
 
 using namespace std;
 
@@ -43,6 +44,7 @@ World::World(int height, int width)
 {
 	this->height = height;
 	this->width = width;
+	
 	System::hideCursor();
 	all = height * width;
 	m_cells = vector<char>(all);
@@ -52,18 +54,9 @@ World::World(int height, int width)
 	sampleMaze = "#,#,#,#,#,#,1, ,?,#,#,?, , ,#,#,?,#,2,#,#,#,#,#,#";
 	//initialize the timer. We want to display the time elapsed since the game began in draw()
 	m_timer.start();
-
-	//m_cells = sampleMaze.spl
-
-	//for (int i = 0; i < sampleMaze.size - 1; i++) {
-
-	//}
-
-
-	//TODO: initalize everything else
-	//...
+	sampleMaze = createMaze(height, width);
 	//crear las celdas en si 
-	sampleMaze.erase(remove(sampleMaze.begin(), sampleMaze.end(), ','), sampleMaze.end());
+	//sampleMaze.erase(remove(sampleMaze.begin(), sampleMaze.end(), ','), sampleMaze.end());
 	for (int i = 0; i < sampleMaze.size() ; i ++) 
 	{
 		m_cells[i] = sampleMaze.at(i);
@@ -78,30 +71,11 @@ World::World(int height, int width)
 			coins++;
 		}
 	}
-
-	//getMaze();
-
-	/*for (int i = 0; i < height; i ++) {
-		for (int j = 0; j < width; j++) {			
-			if (j == width - 1) {
-
-				maze += '-' + '\n';
-			}
-			else {
-
-				maze += '-';
-			}
-		}
-	}*/
-
 }
 
 World::~World()
 {
 }
-
-
-
 
 void World::draw()
 {
@@ -229,3 +203,44 @@ void World::drawMaze()
 	std::this_thread::sleep_for(std::chrono::milliseconds(100));
 }
 
+string World::createMaze(int x, int y) {
+
+	string maze = "";
+	srand(time(0));
+	int r;
+	bool player1 = false;
+	bool player2 = false;
+	for (int i = 0; i < x; i++) {
+		for (int j = 0; j < y; j++) {
+			if (i == 0 || j == y - 1 || j == 0 || i == x - 1) {
+				maze += "#";
+			}
+			else {
+				if (!player1) {
+					maze += "1";
+					player1 = true;
+					continue;
+				}
+				else if (!player2)
+				{
+					maze += "2";
+					player2 = true;
+					continue;
+				}
+				
+				r = rand()%100;
+				if (r < 20) {
+					maze += "#";
+				}
+				else if (21 < r && r < 60) {
+					maze += "?";
+				}
+				else {
+					maze += " ";
+				}
+			}
+		}
+	}
+
+	return maze;
+}
