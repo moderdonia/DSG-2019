@@ -12,7 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
-    <Text Include="..\..\..\..\..\Documents\maze.txt">
+    <Text Include="maze.txt">
       <Filter>Source Files</Filter>
     </Text>
   </ItemGroup>

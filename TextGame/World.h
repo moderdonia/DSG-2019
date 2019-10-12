@@ -12,6 +12,7 @@ class World
 	void drawMaze();
 	string maze;
 	string sampleMaze;
+	string size;
 	int pos1;
 	int pos2;
 	int height;
@@ -22,7 +23,7 @@ class World
 
 public:
 	World(string nameFile);
-	World(int height, int width);
+	//World(int height, int width);
 	~World();
 
 	void draw();

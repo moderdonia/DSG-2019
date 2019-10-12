@@ -152,7 +152,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="..\..\..\..\..\Documents\maze.txt" />
+    <Text Include="maze.txt" />
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>

@@ -14,7 +14,7 @@
 #include <windows.h>
 
 using namespace std;
-
+/*
 World::World(std::string nameFile)
 {	//cell(x,y) = width * y + x para saber la posicion de una casilla en una matriz
 	System::hideCursor();
@@ -27,7 +27,7 @@ World::World(std::string nameFile)
 
 	//TODO: initalize everything else
 	//...
-	/*
+	
 		ifstream inputFile("example.txt", fstream::in);
 		if(inputFile.is_open())
 		{
@@ -38,13 +38,52 @@ World::World(std::string nameFile)
 			}
 			inputFile.close();
 		}
-	*/
+	
 }
-
-World::World(int height, int width)
+*/
+//World::World(int height, int width)
+World::World(string nameFile)
 {
-	this->height = height;
-	this->width = width;
+	ifstream inFile;
+	inFile.open("maze.txt");
+
+	if (!inFile) {
+		cerr << "Unable to open file datafile.txt";
+		exit(1);
+	}
+	string line;
+
+	bool firstLine = false;
+	while (getline(inFile, line))
+	{
+		if (!firstLine) {
+			size = line;
+			firstLine = true;
+		}
+		else {
+			maze = line;
+		}
+	}
+
+	bool first = true;
+	string firstNumber = "";
+	string secondNumber = "";
+
+	for (int i = 0; i < size.length(); i++) {
+		if (size[i] != ',') {
+			if (first) {
+				firstNumber += size[i];
+			}
+			else {
+				secondNumber += size[i];
+			}	
+			continue;
+		}
+		first = false;
+	}
+
+	this->height = stoi(secondNumber);
+	this->width = stoi(firstNumber);
 	
 	System::hideCursor();
 	all = height * width;
@@ -52,23 +91,24 @@ World::World(int height, int width)
 	coins1 = 0;
 	coins2 = 0;
 	coins = 0;
-	sampleMaze = "#,#,#,#,#,#,1, ,?,#,#,?, , ,#,#,?,#,2,#,#,#,#,#,#";
+	//sampleMaze = "#,#,#,#,#,#,1, ,?,#,#,?, , ,#,#,?,#,2,#,#,#,#,#,#";
 	//initialize the timer. We want to display the time elapsed since the game began in draw()
 	m_timer.start();
-	sampleMaze = createMaze(height, width);
+	//sampleMaze = createMaze(height, width); //to create random maze
 	//crear las celdas en si 
 	//sampleMaze.erase(remove(sampleMaze.begin(), sampleMaze.end(), ','), sampleMaze.end());
-	for (int i = 0; i < sampleMaze.size() ; i ++) 
+	maze.erase(remove(maze.begin(), maze.end(), ','), maze.end());
+	for (int i = 0; i < maze.size() ; i ++) 
 	{
-		m_cells[i] = sampleMaze.at(i);
+		m_cells[i] = maze.at(i);
 
-		if (sampleMaze.at(i) == '1') {
+		if (maze.at(i) == '1') {
 			pos1 = i;
 		}
-		else if (sampleMaze.at(i) == '2') {
+		else if (maze.at(i) == '2') {
 			pos2 = i;
 		}
-		else if (sampleMaze.at(i) == '?') {
+		else if (maze.at(i) == '?') {
 			coins++;
 		}
 	}
