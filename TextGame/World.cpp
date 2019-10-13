@@ -14,41 +14,16 @@
 #include <windows.h>
 
 using namespace std;
-/*
-World::World(std::string nameFile)
-{	//cell(x,y) = width * y + x para saber la posicion de una casilla en una matriz
-	System::hideCursor();
-	maze = "";
-	//initialize the timer. We want to display the time elapsed since the game began in draw()
-	m_timer.start();
-	ifstream infile;
-	infile.open(nameFile);
 
 
-	//TODO: initalize everything else
-	//...
-	
-		ifstream inputFile("example.txt", fstream::in);
-		if(inputFile.is_open())
-		{
-			for (int i = 0; i< 9; i++)
-			{
-				inputFile >> datos[i];
-				inputFile >> delimiter;
-			}
-			inputFile.close();
-		}
-	
-}
-*/
-//World::World(int height, int width)
 World::World(string nameFile)
 {
+	//Code to import maze from file----------------------------------
 	ifstream inFile;
 	inFile.open("maze.txt");
 
 	if (!inFile) {
-		cerr << "Unable to open file datafile.txt";
+		cerr << "Unable to open file datafile";
 		exit(1);
 	}
 	string line;
@@ -69,6 +44,7 @@ World::World(string nameFile)
 	string firstNumber = "";
 	string secondNumber = "";
 
+	//To separate height and width, with a comma between them
 	for (int i = 0; i < size.length(); i++) {
 		if (size[i] != ',') {
 			if (first) {
@@ -76,15 +52,16 @@ World::World(string nameFile)
 			}
 			else {
 				secondNumber += size[i];
-			}	
+			}
 			continue;
 		}
 		first = false;
 	}
+	//---------------------------------------------------------
 
 	this->height = stoi(secondNumber);
 	this->width = stoi(firstNumber);
-	
+
 	System::hideCursor();
 	all = height * width;
 	m_cells = vector<char>(all);
@@ -92,13 +69,13 @@ World::World(string nameFile)
 	coins2 = 0;
 	coins = 0;
 	//sampleMaze = "#,#,#,#,#,#,1, ,?,#,#,?, , ,#,#,?,#,2,#,#,#,#,#,#";
-	//initialize the timer. We want to display the time elapsed since the game began in draw()
+
 	m_timer.start();
 	//sampleMaze = createMaze(height, width); //to create random maze
 	//crear las celdas en si 
 	//sampleMaze.erase(remove(sampleMaze.begin(), sampleMaze.end(), ','), sampleMaze.end());
 	maze.erase(remove(maze.begin(), maze.end(), ','), maze.end());
-	for (int i = 0; i < maze.size() ; i ++) 
+	for (int i = 0; i < maze.size(); i++)
 	{
 		m_cells[i] = maze.at(i);
 
@@ -122,11 +99,6 @@ void World::draw()
 {
 	drawMaze();
 
-	//TODO: -write the points each player has
-	
-
-	//TODO: -write the time elapsed since the beginning
-	//		-set the proper position/color
 	std::cout << m_timer.getElapsedTime() << "   ";
 }
 
@@ -163,31 +135,31 @@ bool World::checkMove(int direction, int numPlayer) //0 == left ; 1 == up ; 2 ==
 		return false;
 	}
 	else {
-		if (m_cells[x] == '?') 
+		if (m_cells[x] == '?')
 		{
 			coins--;
 			Beep(900, 50);
-			if (numPlayer == 1) 
+			if (numPlayer == 1)
 			{
 				coins1++;
 				m_cells[x] = '1';
 				pos1 = x;
 			}
-			else 
+			else
 			{
 				coins2++;
 				m_cells[x] = '2';
 				pos2 = x;
 			}
 		}
-		else 
+		else
 		{
-			if (numPlayer == 1) 
+			if (numPlayer == 1)
 			{
 				m_cells[x] = '1';
 				pos1 = x;
 			}
-			else 
+			else
 			{
 				m_cells[x] = '2';
 				pos2 = x;
@@ -233,32 +205,32 @@ int World::getWinner()
 
 void World::drawMaze()
 {
-	
 	System::clear();
 	cout << getMaze();
-	
-	//TODO: -draw the maze: walls and each of the cells
-	// escribir por dentro
-	
-	
-	//we sleep for a while
+
 	std::this_thread::sleep_for(std::chrono::milliseconds(100));
 }
 
+//Code to create a random maze
 string World::createMaze(int x, int y) {
 
 	string maze = "";
 	srand(time(0));
+
 	int r;
 	int counter = 0;
+
 	bool player1 = false;
 	bool player2 = false;
+
 	for (int i = 0; i < x; i++) {
 		for (int j = 0; j < y; j++) {
+			//If the position is a point of the wall, we add #
 			if (i == 0 || j == y - 1 || j == 0 || i == x - 1) {
 				maze += "#";
 			}
 			else {
+				//We create both players next to each other
 				if (!player1) {
 					maze += "1";
 					player1 = true;
@@ -270,16 +242,17 @@ string World::createMaze(int x, int y) {
 					player2 = true;
 					continue;
 				}
-				
-				r = rand()%100;
+
+				//Based on a random number between 0 and 100, we add a wall, a coin or a blank space
+				r = rand() % 100;
 				if (r < 60) {
-					if (maze[counter+1] != '#' && maze[counter - y + 3] != '#' && maze[counter - y + 1] != '#' && maze[counter - y + 2] != '#') {
+					//Condition to avoid wall brick next to another one so any player or any coin will be locked
+					if (maze[counter + 1] != '#' && maze[counter - y + 3] != '#' && maze[counter - y + 1] != '#' && maze[counter - y + 2] != '#') {
 						maze += "#";
 					}
 					else {
 						maze += " ";
 					}
-					
 				}
 				else if (61 < r && r < 80) {
 					maze += "?";
@@ -291,6 +264,5 @@ string World::createMaze(int x, int y) {
 			counter++;
 		}
 	}
-
 	return maze;
 }
