@@ -12,13 +12,16 @@
 #include <istream>
 #include <cstdlib>
 #include <windows.h>
+#include "../SoundManager/SoundManager.h" //relative path to the main header 
 
 using namespace std;
 
 
+
 World::World(string nameFile)
 {
-	//Code to import maze from file----------------------------------
+
+		//Code to import maze from file----------------------------------
 	ifstream inFile;
 	inFile.open("maze.txt");
 
@@ -59,8 +62,11 @@ World::World(string nameFile)
 	}
 	//---------------------------------------------------------
 
-	this->height = stoi(secondNumber);
-	this->width = stoi(firstNumber);
+	//this->height = stoi(secondNumber);
+	//this->width = stoi(firstNumber);
+	
+	height = 10;
+	width = 20;
 
 	System::hideCursor();
 	all = height * width;
@@ -71,10 +77,10 @@ World::World(string nameFile)
 	//sampleMaze = "#,#,#,#,#,#,1, ,?,#,#,?, , ,#,#,?,#,2,#,#,#,#,#,#";
 
 	m_timer.start();
-	//sampleMaze = createMaze(height, width); //to create random maze
+	maze = createMaze(height, width); //to create random maze
 	//crear las celdas en si 
 	//sampleMaze.erase(remove(sampleMaze.begin(), sampleMaze.end(), ','), sampleMaze.end());
-	maze.erase(remove(maze.begin(), maze.end(), ','), maze.end());
+	//maze.erase(remove(maze.begin(), maze.end(), ','), maze.end());
 	for (int i = 0; i < maze.size(); i++)
 	{
 		m_cells[i] = maze.at(i);
@@ -138,7 +144,8 @@ bool World::checkMove(int direction, int numPlayer) //0 == left ; 1 == up ; 2 ==
 		if (m_cells[x] == '?')
 		{
 			coins--;
-			Beep(900, 50);
+			SoundManager::getInstance()->play("../snd/coin.wav");
+			//Beep(900, 50);
 			if (numPlayer == 1)
 			{
 				coins1++;
@@ -186,6 +193,9 @@ string World::getMaze()
 
 int World::getcoins()
 {
+	if (coins == 0) {
+		SoundManager::getInstance()->play("../snd/FFVic.ogg");
+	}
 	return coins;
 }
 

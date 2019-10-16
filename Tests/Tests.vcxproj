@@ -173,6 +173,15 @@
     <ClCompile Include="testWorld.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OpenALSoft\OpenAL-Lib\common.vcxproj">
+      <Project>{58542a51-baf7-388c-931a-e80ab0e672b7}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenALSoft\OpenAL-Lib\OpenAL-Lib.vcxproj">
+      <Project>{bea9afe4-c925-4e0e-b50d-1f0e45b43d08}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\SoundManager\SoundManager.vcxproj">
+      <Project>{a57f9d62-1d00-4d1c-a5c3-bb3710edd95b}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\TextGame\TextGame.vcxproj">
       <Project>{6327db3c-89f6-4f6a-aff9-67c936af2d27}</Project>
     </ProjectReference>

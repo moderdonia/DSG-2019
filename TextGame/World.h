@@ -2,6 +2,7 @@
 #include "Timer.h"
 #include <string>
 #include <vector>
+#include "../SoundManager/SoundManager.h"
 using namespace std;
 
 class World
