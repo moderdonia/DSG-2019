@@ -15,6 +15,12 @@
 
 using namespace std;
 
+World::World()
+{
+	coins1 = 0;
+	coins2 = 0;
+	coins = 0;
+}
 
 World::World(string nameFile)
 {
@@ -173,7 +179,7 @@ bool World::checkMove(int direction, int numPlayer) //0 == left ; 1 == up ; 2 ==
 
 string World::getMaze()
 {
-	maze = "";
+	string maze = "";
 	for (int i = 0; i < height * width; i++)
 	{
 		maze += m_cells[i];
@@ -183,10 +189,15 @@ string World::getMaze()
 	}
 	return maze;
 }
-
+void World::moneda2() {
+	coins2++;
+}
 int World::getcoins()
 {
 	return coins;
+}
+void World::moneda1() {
+	coins1++;
 }
 
 int World::getWinner()
@@ -213,6 +224,12 @@ void World::drawMaze()
 
 //Code to create a random maze
 string World::createMaze(int x, int y) {
+
+	width = x;
+	height = y;
+	all = x * y;
+	m_cells = vector<char>(all);
+	for (int i = 0; i < all; i++) m_cells[i] = ' ';
 
 	string maze = "";
 	srand(time(0));

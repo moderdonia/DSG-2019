@@ -22,6 +22,7 @@ class World
 	int coins;
 
 public:
+	World();
 	World(string nameFile);
 	//World(int height, int width);
 	~World();
@@ -32,4 +33,6 @@ public:
 	int getcoins();
 	int getWinner();
 	string createMaze(int x, int y);
+	void moneda1();
+	void moneda2();
 };
