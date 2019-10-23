@@ -14,12 +14,11 @@ int main()
 	Player player1, player2;
 	GameLogic gameLogic(player1, player2, world);
 
-	//SoundManager* pSoundManager = soundManager.getInstance();
-
 	soundManager.load("../snd/soundtrack-01.wav");
 	soundManager.load("../snd/FFVic.ogg");
 	soundManager.load("../snd/coin.wav");
-	soundManager.play("../snd/soundtrack-01.wav");
+	soundManager.play("../snd/soundtrack-01.wav", 0.1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+
 
 
 	while (!gameLogic.gameHasEnded())

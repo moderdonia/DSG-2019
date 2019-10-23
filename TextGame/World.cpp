@@ -65,8 +65,8 @@ World::World(string nameFile)
 	//this->height = stoi(secondNumber);
 	//this->width = stoi(firstNumber);
 	
-	height = 10;
-	width = 20;
+	height = 15;
+	width = 5;
 
 	System::hideCursor();
 	all = height * width;
@@ -210,6 +210,16 @@ int World::getWinner()
 	else {
 		return 0;
 	}
+}
+
+int World::getCoinsPlayer1()
+{
+	return coins1;
+}
+
+int World::getCoinsPlayer2()
+{
+	return coins2;
 }
 
 

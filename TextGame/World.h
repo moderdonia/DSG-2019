@@ -32,5 +32,7 @@ public:
 	string getMaze();
 	int getcoins();
 	int getWinner();
+	int getCoinsPlayer1();
+	int getCoinsPlayer2();
 	string createMaze(int x, int y);
 };
