@@ -168,9 +168,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="testGameLogic.cpp" />
     <ClCompile Include="testPlayer.cpp" />
-    <ClCompile Include="testWorld.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OpenALSoft\OpenAL-Lib\common.vcxproj">
