@@ -24,31 +24,6 @@ namespace Tests
 			world.moneda2();
 			Assert::AreEqual(2, world.getWinner());
 		}
-		TEST_METHOD(catarPared)
-		{
-			World world;
-			world.createMaze(5,5);
-			string aux = world.getMaze();
-			string aux2 = "";
-			Assert::AreEqual(aux , aux2);
-		}
-		TEST_METHOD(catarMoneda)
-		{
-			// TODO: Your test code here
-		}
-		TEST_METHOD(catarPersonaje)
-		{
-			// TODO: Your test code here
-		}
-		TEST_METHOD(TestMethod1)
-		{
-			
-
-		}
-		TEST_METHOD(leerFile)
-		{
-			
-		}
 		TEST_METHOD(testPlayer)
 		{
 			Player player1;
