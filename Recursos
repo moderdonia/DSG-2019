@@ -1,0 +1,16 @@
+Desarrollador 1: 
+•	Inicializar el juego
+•	Pantalla inicio (principal)
+•	Programar lógica de victoria
+
+Desarrollador 2:
+•	Preparar/implementar texturas y sonidos (búsqueda y creación)
+•	Controlar input por teclado
+•	Crear primer mapa básico con 2 player y una bola (y más mapas)
+
+Desarrollador 3:
+•	Animación y movimiento de los objetos (Bola, jugadores…) (Depende de los recursos del des. 2)
+
+Desarrollador 4:
+•	Gestión de demás desarrolladores
+•	Multijugador
