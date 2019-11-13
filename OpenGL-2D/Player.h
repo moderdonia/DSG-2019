@@ -9,5 +9,7 @@ public:
 
 
 	virtual void draw();
+	void moveUp();
+	void moveDown();
 };
 

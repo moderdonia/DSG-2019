@@ -12,13 +12,22 @@
 #include <istream>
 #include <cstdlib>
 #include <windows.h>
+#include "../SoundManager/SoundManager.h" //relative path to the main header 
 
 using namespace std;
+
+World::World()
+{
+	coins1 = 0;
+	coins2 = 0;
+	coins = 0;
+}
 
 
 World::World(string nameFile)
 {
-	//Code to import maze from file----------------------------------
+
+		//Code to import maze from file----------------------------------
 	ifstream inFile;
 	inFile.open("maze.txt");
 
@@ -59,8 +68,11 @@ World::World(string nameFile)
 	}
 	//---------------------------------------------------------
 
-	this->height = stoi(secondNumber);
-	this->width = stoi(firstNumber);
+	//this->height = stoi(secondNumber);
+	//this->width = stoi(firstNumber);
+	
+	height = 15;
+	width = 5;
 
 	System::hideCursor();
 	all = height * width;
@@ -71,10 +83,10 @@ World::World(string nameFile)
 	//sampleMaze = "#,#,#,#,#,#,1, ,?,#,#,?, , ,#,#,?,#,2,#,#,#,#,#,#";
 
 	m_timer.start();
-	//sampleMaze = createMaze(height, width); //to create random maze
+	maze = createMaze(height, width); //to create random maze
 	//crear las celdas en si 
 	//sampleMaze.erase(remove(sampleMaze.begin(), sampleMaze.end(), ','), sampleMaze.end());
-	maze.erase(remove(maze.begin(), maze.end(), ','), maze.end());
+	//maze.erase(remove(maze.begin(), maze.end(), ','), maze.end());
 	for (int i = 0; i < maze.size(); i++)
 	{
 		m_cells[i] = maze.at(i);
@@ -138,7 +150,8 @@ bool World::checkMove(int direction, int numPlayer) //0 == left ; 1 == up ; 2 ==
 		if (m_cells[x] == '?')
 		{
 			coins--;
-			Beep(900, 50);
+			SoundManager::getInstance()->play("../snd/coin.wav");
+			//Beep(900, 50);
 			if (numPlayer == 1)
 			{
 				coins1++;
@@ -173,7 +186,7 @@ bool World::checkMove(int direction, int numPlayer) //0 == left ; 1 == up ; 2 ==
 
 string World::getMaze()
 {
-	maze = "";
+	string maze = "";
 	for (int i = 0; i < height * width; i++)
 	{
 		maze += m_cells[i];
@@ -183,10 +196,18 @@ string World::getMaze()
 	}
 	return maze;
 }
-
+void World::moneda2() {
+	coins2++;
+}
 int World::getcoins()
 {
+	if (coins == 0) {
+		SoundManager::getInstance()->play("../snd/FFVic.ogg");
+	}
 	return coins;
+}
+void World::moneda1() {
+	coins1++;
 }
 
 int World::getWinner()
@@ -202,6 +223,16 @@ int World::getWinner()
 	}
 }
 
+int World::getCoinsPlayer1()
+{
+	return coins1;
+}
+
+int World::getCoinsPlayer2()
+{
+	return coins2;
+}
+
 
 void World::drawMaze()
 {
@@ -213,6 +244,12 @@ void World::drawMaze()
 
 //Code to create a random maze
 string World::createMaze(int x, int y) {
+
+	width = x;
+	height = y;
+	all = x * y;
+	m_cells = vector<char>(all);
+	for (int i = 0; i < all; i++) m_cells[i] = ' ';
 
 	string maze = "";
 	srand(time(0));

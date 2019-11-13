@@ -2,6 +2,7 @@
 #include "Timer.h"
 #include <string>
 #include <vector>
+#include "../SoundManager/SoundManager.h"
 using namespace std;
 
 class World
@@ -22,6 +23,7 @@ class World
 	int coins;
 
 public:
+	World();
 	World(string nameFile);
 	//World(int height, int width);
 	~World();
@@ -31,5 +33,9 @@ public:
 	string getMaze();
 	int getcoins();
 	int getWinner();
+	int getCoinsPlayer1();
+	int getCoinsPlayer2();
 	string createMaze(int x, int y);
+	void moneda1();
+	void moneda2();
 };

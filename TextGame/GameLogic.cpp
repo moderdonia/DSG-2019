@@ -67,10 +67,15 @@ bool GameLogic::gameHasEnded()
 	if (m_world.getcoins() == 0) {
 		if (m_world.getWinner() != 0) {
 			std::cout << "Juego terminado, ha ganado el jugador " << m_world.getWinner() << endl;
+			std::cout << "Jugador 1: " << m_world.getCoinsPlayer1() << " monedas" << endl;
+			std::cout << "Jugador 2: " << m_world.getCoinsPlayer2() << " monedas" << endl;
 		}
 		else {
 			std::cout << "Juego terminado, ha habido un empate" << endl;
+			std::cout << "Ambos jugadores han recogido " << m_world.getCoinsPlayer1() << " monedas" << endl;
 		}
+
+		
 
 		return true;
 	}

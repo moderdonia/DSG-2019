@@ -32,12 +32,6 @@
     <ClCompile Include="testPlayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="testWorld.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="testGameLogic.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\TextGame\GameLogic.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
