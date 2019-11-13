@@ -20,4 +20,3 @@ public:
 	void setColor(double r, double g, double b);
 	void draw();
 };
-

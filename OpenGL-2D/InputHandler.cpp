@@ -17,6 +17,7 @@ InputHandler::~InputHandler()
 void InputHandler::initialize()
 {
 	glutKeyboardFunc(__processKeyboard);
+	glutKeyboardUpFunc
 }
 
 
@@ -25,11 +26,22 @@ void InputHandler::processKeyboard(unsigned char key, int x, int y)
 	//keyboard callback function
 	switch (key)
 	{
-		//TODO
-	case '8': break;
-	case '2': break;
-	case '6': break;
-	case '4': break;
+	case 'w':
+		//p1 up
+
+		break;
+	case 's':
+		//p1 down
+
+		break;
+	case '8':
+		//p2 up 
+
+		break;
+	case '5':
+		//p2 down
+
+		break;
 	case 27: exit(0);
 	}
 }
