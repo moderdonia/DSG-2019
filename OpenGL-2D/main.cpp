@@ -10,34 +10,34 @@
 
 int main(int argc, char** argv)
 {
-	Renderer renderer;
-	InputHandler inputHandler(renderer);
+	Renderer *renderer = new Renderer();
+	InputHandler inputHandler(*renderer);
 	
-	Player player1 = renderer.getPlayer1();
-	Player player2 = renderer.getPlayer2();
+	renderer->getPlayer1();
+	renderer->getPlayer2();
 
-	renderer.initialize(argc, argv);
+	renderer->initialize(argc, argv);
 	inputHandler.initialize();
 
 
 	//test objects
 	
 	
-	player1.setColor(255, 0, 0);
-	player1.setPosition(0.9, 0.6);
+	renderer->getPlayer1().setColor(255, 0, 0);
+	renderer->getPlayer1().setPosition(0.9, 0.6);
 	//pSprite1->setRotation(0.0);
 	//pSprite1->setSize(1);
-	player1.setDepth(1.5);
+	renderer->getPlayer1().setDepth(1.5);
 	//pSprite1->draw();
-	renderer.addObject(&player1);
+	renderer->addObject(&renderer->getPlayer1());
 
-	player2.setColor(0, 255, 0);
-	player2.setPosition(-0.9, -0.6);
+	renderer->getPlayer2().setColor(0, 255, 0);
+	renderer->getPlayer2().setPosition(-0.9, -0.6);
 	//pSprite2->setRotation(0.0);
 	//pSprite2->setSize(1);
-	player2.setDepth(1.5);
+	renderer->getPlayer2().setDepth(1.5);
 	//pSprite2->draw();
-	renderer.addObject(&player2);
+	renderer->addObject(&renderer->getPlayer2());
 
 	Ball *pBall = new Ball();
 	pBall->setColor(255, 255, 0);
@@ -46,13 +46,13 @@ int main(int argc, char** argv)
 	pBall->setSize(0.05);
 	pBall->setDepth(1.5);
 	//pSprite3->draw();
-	renderer.addObject(pBall);
+	renderer->addObject(pBall);
 
 	
 
 	while (1)
 	{
-		renderer.drawScene();
+		renderer->drawScene();
 		//UPDATE////////////////////
 		////////////////////////////
 		//process queued events
