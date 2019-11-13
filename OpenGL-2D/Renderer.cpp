@@ -61,6 +61,16 @@ void Renderer::reshapeWindow(int w, int h)
 	glViewport(0, 0, (GLsizei)w, (GLsizei)h);
 }
 
+Player Renderer::getPlayer1()
+{
+	return player1;
+}
+
+Player Renderer::getPlayer2()
+{
+	return player2;
+}
+
 void Renderer::addObject(Drawable* pObj)
 {
 	m_objects2D.push_back(pObj);

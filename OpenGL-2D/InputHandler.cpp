@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "InputHandler.h"
 #include "../3rd-party/freeglut3/include/GL/freeglut.h"
+#include "./Player.h"
+#include "Renderer.h"
 
 InputHandler* InputHandler::m_pInputHandler = nullptr;
 
@@ -17,9 +19,12 @@ InputHandler::~InputHandler()
 void InputHandler::initialize()
 {
 	glutKeyboardFunc(__processKeyboard);
-	glutKeyboardUpFunc
+	//glutKeyboardUpFunc
 }
 
+void setPlayers(Player& player1, Player& player2) {
+
+}
 
 void InputHandler::processKeyboard(unsigned char key, int x, int y)
 {
@@ -28,7 +33,7 @@ void InputHandler::processKeyboard(unsigned char key, int x, int y)
 	{
 	case 'w':
 		//p1 up
-
+		
 		break;
 	case 's':
 		//p1 down
