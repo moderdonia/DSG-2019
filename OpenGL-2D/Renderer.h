@@ -9,8 +9,8 @@ class Renderer
 {
 	static Renderer* m_pRenderer;
 	int m_windowWidth = 0, m_windowHeight = 0;
-	Player player1;
-	Player player2;
+	Player* player1 = new Player();
+	Player* player2 = new Player();
 
 
 	vector <Drawable*> m_objects2D;

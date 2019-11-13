@@ -63,12 +63,12 @@ void Renderer::reshapeWindow(int w, int h)
 
 Player Renderer::getPlayer1()
 {
-	return player1;
+	return *player1;
 }
 
 Player Renderer::getPlayer2()
 {
-	return player2;
+	return *player2;
 }
 
 void Renderer::addObject(Drawable* pObj)
