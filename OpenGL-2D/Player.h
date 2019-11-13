@@ -9,6 +9,7 @@ public:
 
 
 	virtual void draw();
-	virtual void processInput();
+	void moveUp();
+	void moveDown();
 };
 

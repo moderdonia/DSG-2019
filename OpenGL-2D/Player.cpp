@@ -35,3 +35,11 @@ void Player::draw()
 
 	Sprite::draw();
 }
+
+void Player::moveUp() {
+
+}
+
+void Player::moveDown() {
+
+}
