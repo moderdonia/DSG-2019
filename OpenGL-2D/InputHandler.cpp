@@ -26,10 +26,13 @@ void InputHandler::processKeyboard(unsigned char key, int x, int y)
 	switch (key)
 	{
 		//TODO
-	case '8': break;
-	case '2': break;
-	case '6': break;
-	case '4': break;
+	case '8': 
+		
+		break;
+	case '2': 
+		
+		break;
+	
 	case 27: exit(0);
 	}
 }
