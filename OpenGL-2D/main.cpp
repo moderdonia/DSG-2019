@@ -50,6 +50,7 @@ int main(int argc, char** argv)
 
 	while (1)
 	{
+		renderer.drawScene();
 		//UPDATE////////////////////
 		////////////////////////////
 		//process queued events

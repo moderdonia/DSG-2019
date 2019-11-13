@@ -44,6 +44,12 @@ void Sprite::setSize(double size)
 	//This method only updates internally the object's size. It still needs to be passed to OpenGL before drawing it
 	this->m_size = size;
 }
+double Sprite::getPositionX() {
+	return m_x;
+}
+double Sprite::getPositionY() {
+	return m_y;
+}
 
 void Sprite::draw()
 {

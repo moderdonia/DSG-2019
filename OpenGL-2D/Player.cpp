@@ -37,7 +37,7 @@ void Player::draw()
 }
 
 void Player::moveUp() {
-
+	this-> m_y += 0.1;
 }
 
 void Player::moveDown() {

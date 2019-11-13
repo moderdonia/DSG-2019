@@ -19,7 +19,7 @@ InputHandler::~InputHandler()
 void InputHandler::initialize()
 {
 	glutKeyboardFunc(__processKeyboard);
-	//glutKeyboardUpFunc
+	//glutKeyboardUpFunc 
 }
 
 void setPlayers(Player& player1, Player& player2) {
@@ -33,7 +33,7 @@ void InputHandler::processKeyboard(unsigned char key, int x, int y)
 	{
 	case 'w':
 		//p1 up
-		
+		m_renderer.getPlayer1().moveUp();
 		break;
 	case 's':
 		//p1 down
