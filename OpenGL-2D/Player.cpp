@@ -16,9 +16,14 @@ Player::~Player()
 
 
 void Player::moveUp() {
-	this->m_y += 0.1;
+	if (this->m_y < 0.75) {
+		this->m_y += 0.08;
+	}
+	
 }
 
 void Player::moveDown() {
-	this->m_y -= 0.1;
+	if (this->m_y > -0.75) {
+		this->m_y -= 0.08  ;
+	}
 }
