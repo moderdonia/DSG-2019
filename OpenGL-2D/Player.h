@@ -10,5 +10,6 @@ public:
 
 	void moveUp();
 	void moveDown();
+	virtual void draw();
 };
 

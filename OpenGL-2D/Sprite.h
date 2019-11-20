@@ -29,6 +29,7 @@ public:
 	void setDepth(double depth);
 	void setRotation(double angle);
 	void setSize(double size);
+
 	string getName();
 };
 

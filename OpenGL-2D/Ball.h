@@ -4,9 +4,10 @@
 class Ball : public Sprite
 {
 public:
-	Ball();
+	Ball(string pName);
 	~Ball();
 	void updateBall();
 	virtual void draw();
+	void move(float vx, float vy);
 };
 
