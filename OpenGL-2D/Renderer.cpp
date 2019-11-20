@@ -61,14 +61,15 @@ void Renderer::reshapeWindow(int w, int h)
 	glViewport(0, 0, (GLsizei)w, (GLsizei)h);
 }
 
-Player Renderer::getPlayer1()
+Drawable* Renderer::getObjectByName(string name)
 {
-	return player1;
-}
+	for (int i = 0; i < m_objects2D.size(); i++)
+	{
+		if (m_objects2D[i]->getName() == name) {
 
-Player Renderer::getPlayer2()
-{
-	return player2;
+			return m_objects2D[i];
+		}
+	}
 }
 
 void Renderer::addObject(Drawable* pObj)
@@ -84,9 +85,9 @@ void Renderer::drawScene()
 	//set the 2d modelview matrix
 	set2DMatrix();
 
-	for (auto it = m_objects2D.begin(); it != m_objects2D.end(); ++it)
+	for (int i=0; i<m_objects2D.size(); i++)
 	{
-		(*it)->draw();
+		m_objects2D[i]->draw();
 	}
 }
 
