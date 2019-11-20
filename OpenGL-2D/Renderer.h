@@ -9,8 +9,6 @@ class Renderer
 {
 	static Renderer* m_pRenderer;
 	int m_windowWidth = 0, m_windowHeight = 0;
-	Player* player1 = new Player();
-	Player* player2 = new Player();
 
 
 	vector <Drawable*> m_objects2D;
@@ -28,8 +26,7 @@ public:
 	void addObject(Drawable* pObj);
 	void reshapeWindow(int x, int y);
 
-	Player getPlayer1();
-	Player getPlayer2();
+	Drawable* getObjectByName(string name);
 
 	static void __drawScene();
 	static void __reshapeWindow(int x, int y);
