@@ -1,4 +1,5 @@
 #pragma once
+#include "./Player.h"
 
 class Drawable;
 #include <vector>
@@ -8,6 +9,7 @@ class Renderer
 {
 	static Renderer* m_pRenderer;
 	int m_windowWidth = 0, m_windowHeight = 0;
+
 
 	vector <Drawable*> m_objects2D;
 
@@ -23,6 +25,8 @@ public:
 	void drawScene();
 	void addObject(Drawable* pObj);
 	void reshapeWindow(int x, int y);
+
+	Drawable* getObjectByName(string name);
 
 	static void __drawScene();
 	static void __reshapeWindow(int x, int y);

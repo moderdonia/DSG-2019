@@ -19,18 +19,18 @@ int main(int argc, char** argv)
 
 
 	//test objects
-	Player *pPlayer= new Player();
+	Player *pPlayer= new Player("player1");
 	pPlayer->setColor(255, 0, 0);
-	pPlayer->setPosition(0.9, 0.6);
+	pPlayer->setPosition(0.9, 0);
 	//pSprite1->setRotation(0.0);
 	//pSprite1->setSize(1);
 	pPlayer->setDepth(1.5);
 	//pSprite1->draw();
 	renderer.addObject(pPlayer);
 
-	Player *pPlayer2 = new Player();
+	Player *pPlayer2 = new Player("player2");
 	pPlayer2->setColor(0, 255, 0);
-	pPlayer2->setPosition(-0.9, -0.6);
+	pPlayer2->setPosition(-0.9, 0);
 	//pSprite2->setRotation(0.0);
 	//pSprite2->setSize(1);
 	pPlayer2->setDepth(1.5);
