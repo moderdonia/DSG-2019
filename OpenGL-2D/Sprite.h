@@ -1,10 +1,15 @@
 #pragma once
-
+#include <string>
 #include "Drawable.h"
+
+using namespace std;
 
 class Sprite: public Drawable
 {
 protected:
+
+	string name;
+
 	float m_r, m_g, m_b;
 	
 	double m_x= 0.0, m_y= 0.0; //position around which the quad is drawn
@@ -24,5 +29,7 @@ public:
 	void setDepth(double depth);
 	void setRotation(double angle);
 	void setSize(double size);
+
+	string getName();
 };
 

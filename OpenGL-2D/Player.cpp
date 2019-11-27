@@ -1,9 +1,10 @@
 #include "Player.h"
 #include "stdafx.h"
+using namespace std;
 
-Player::Player()
+Player::Player(string pName)
 {
-
+	this->name = pName;
 }
 
 
@@ -37,9 +38,9 @@ void Player::draw()
 }
 
 void Player::moveUp() {
-
+	this->m_y += 0.1;
 }
 
 void Player::moveDown() {
-
+	this->m_y -= 0.1;
 }

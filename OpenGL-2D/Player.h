@@ -3,13 +3,13 @@
 
 class Player: public Sprite
 {
+
 public:
-	Player();
+	Player(string pName);
 	~Player();
 
-
-	virtual void draw();
 	void moveUp();
 	void moveDown();
+	virtual void draw();
 };
 

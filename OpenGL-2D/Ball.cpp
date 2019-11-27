@@ -2,13 +2,18 @@
 #include "stdafx.h"
 
 
-Ball::Ball()
+Ball::Ball(string pName)
 {
+	this->name = pName;
 }
 
 
 Ball::~Ball()
 {
+}
+
+void Ball::updateBall() {
+	
 }
 
 void Ball::draw()
@@ -35,3 +40,16 @@ void Ball::draw()
 
 	Sprite::draw();
 }
+
+void Ball::move(float vx, float vy)
+{
+	this->m_x += vx;
+	this->m_y += vy;
+}
+
+
+/*
+atributos dirección en bola que actualizan el move, metodos para definir el vector de movimiento, posición anterior, interfaz collider
+
+
+*/

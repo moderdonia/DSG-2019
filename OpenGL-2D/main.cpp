@@ -19,7 +19,7 @@ int main(int argc, char** argv)
 
 
 	//test objects
-	Player *pPlayer= new Player();
+	Player *pPlayer= new Player("player1");
 	pPlayer->setColor(255, 0, 0);
 	pPlayer->setPosition(0.9, 0.6);
 	//pSprite1->setRotation(0.0);
@@ -28,7 +28,7 @@ int main(int argc, char** argv)
 	//pSprite1->draw();
 	renderer.addObject(pPlayer);
 
-	Player *pPlayer2 = new Player();
+	Player *pPlayer2 = new Player("player2");
 	pPlayer2->setColor(0, 255, 0);
 	pPlayer2->setPosition(-0.9, -0.6);
 	//pSprite2->setRotation(0.0);
@@ -37,10 +37,10 @@ int main(int argc, char** argv)
 	//pSprite2->draw();
 	renderer.addObject(pPlayer2);
 
-	Ball *pBall = new Ball();
+	Ball *pBall = new Ball("ball");
 	pBall->setColor(255, 255, 0);
 	pBall->setPosition(0, 0);
-	pBall->setRotation(0.0);
+	//pBall->setRotation(0.0);
 	pBall->setSize(0.05);
 	pBall->setDepth(1.5);
 	//pSprite3->draw();
@@ -54,8 +54,8 @@ int main(int argc, char** argv)
 		////////////////////////////
 		//process queued events
 		glutMainLoopEvent();
-
-
+		
+		((Ball*)renderer.getObjectByName("ball"))->move(-0.0001, 0.0001);
 		//RENDER////////////////////
 		////////////////////////////
 		glutPostRedisplay();
