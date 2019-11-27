@@ -1,6 +1,8 @@
 #include "Ball.h"
 #include "stdafx.h"
+#include "Player.h"
 
+Renderer m_renderer;
 
 Ball::Ball(string pName)
 {
@@ -41,15 +43,31 @@ void Ball::draw()
 	Sprite::draw();
 }
 
-void Ball::move(float vx, float vy)
+void Ball::move()
 {
-	this->m_x += vx;
-	this->m_y += vy;
+	this->getCollision();
+	this->m_x += this->dx;
+	this->m_y += this->dy;
 }
 
+void Ball::getCollision() {
+	if (m_y >= 0.975 || m_y <= -0.975) {
+		this->setDir(this->dx, -(this->dy));
+	}
 
-/*
-atributos dirección en bola que actualizan el move, metodos para definir el vector de movimiento, posición anterior, interfaz collider
+	if ((m_x >= (((Player*)m_renderer.get()->getObjectByName("player2"))->getX() - 0.025) &&
+			m_y >= ((Player*)m_renderer.get()->getObjectByName("player2"))->getY() - 0.2 &&
+			m_y <= ((Player*)m_renderer.get()->getObjectByName("player2"))->getY() + 0.2) 
+		||
+		(m_x <= (((Player*)m_renderer.get()->getObjectByName("player1"))->getX() + 0.025) &&
+			(m_y >= ((Player*)m_renderer.get()->getObjectByName("player1"))->getY() - 0.2) && 
+			(m_y <= ((Player*)m_renderer.get()->getObjectByName("player1"))->getY() + 0.2))) {
+		this->setDir(-(this->dx), this->dy);
+	}
+}
 
-
-*/
+void Ball::setDir(float pDx, float pDy)
+{
+	this->dx = pDx;
+	this->dy = pDy;
+}

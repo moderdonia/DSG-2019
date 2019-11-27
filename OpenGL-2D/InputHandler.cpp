@@ -33,20 +33,35 @@ void InputHandler::processKeyboard(unsigned char key, int x, int y)
 	{
 	case 'w':
 		//p1 up
-		((Player*)m_renderer.getObjectByName("player2"))->moveUp();
-		
+		((Player*)m_renderer.getObjectByName("player1"))->moveUp();
 		break;
 	case 's':
 		//p1 down
-		((Player*)m_renderer.getObjectByName("player2"))->moveDown();
+		((Player*)m_renderer.getObjectByName("player1"))->moveDown();
+		break;
+	case 'd':
+		//p1 down
+		((Player*)m_renderer.getObjectByName("player1"))->moveRightPlayer1();
+		break;
+	case 'a':
+		//p1 down
+		((Player*)m_renderer.getObjectByName("player1"))->moveLeftPlayer1();
 		break;
 	case '8':
 		//p2 up 
-		((Player*)m_renderer.getObjectByName("player1"))->moveUp();
+		((Player*)m_renderer.getObjectByName("player2"))->moveUp();
 		break;
 	case '5':
 		//p2 down
-		((Player*)m_renderer.getObjectByName("player1"))->moveDown();
+		((Player*)m_renderer.getObjectByName("player2"))->moveDown();
+		break;
+	case '6':
+		//p1 down
+		((Player*)m_renderer.getObjectByName("player2"))->moveRightPlayer2();
+		break;
+	case '4':
+		//p1 down
+		((Player*)m_renderer.getObjectByName("player2"))->moveLeftPlayer2();
 		break;
 	case 27: exit(0);
 	}

@@ -37,6 +37,39 @@ void Player::draw()
 	Sprite::draw();
 }
 
+double Player::getX() {
+	return this->m_x;
+}
+
+double Player::getY() {
+	return this->m_y;
+}
+
+void Player::moveRightPlayer1() {
+	if (this->m_x < -0.41) {
+		this->m_x += 0.08;
+	}
+}
+
+void Player::moveLeftPlayer1() {
+	if (this->m_x >= -0.9) {
+		this->m_x -= 0.08;
+	}
+}
+
+void Player::moveRightPlayer2() {
+	if (this->m_x <= 0.9) {
+		this->m_x += 0.08;
+	}
+
+}
+
+void Player::moveLeftPlayer2() {
+	if (this->m_x > 0.41) {
+		this->m_x -= 0.08;
+	}
+}
+
 void Player::moveUp() {
 	if (this->m_y < 0.75) {
 		this->m_y += 0.08;
