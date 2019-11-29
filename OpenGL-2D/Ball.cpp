@@ -55,14 +55,15 @@ void Ball::getCollision() {
 		this->setDir(this->dx, -(this->dy));
 	}
 
-	if ((m_x >= (((Player*)m_renderer.get()->getObjectByName("player2"))->getX() - 0.025) &&
+	if ((m_x >= (((Player*)m_renderer.get()->getObjectByName("player2"))->getX() - 0.025) && m_x <= (((Player*)m_renderer.get()->getObjectByName("player2"))->getX() + 0.025) &&
 			m_y >= ((Player*)m_renderer.get()->getObjectByName("player2"))->getY() - 0.2 &&
 			m_y <= ((Player*)m_renderer.get()->getObjectByName("player2"))->getY() + 0.2) 
 		||
-		(m_x <= (((Player*)m_renderer.get()->getObjectByName("player1"))->getX() + 0.025) &&
+		(m_x <= (((Player*)m_renderer.get()->getObjectByName("player1"))->getX() + 0.025) && m_x <= (((Player*)m_renderer.get()->getObjectByName("player1"))->getX() + 0.025) &&
 			(m_y >= ((Player*)m_renderer.get()->getObjectByName("player1"))->getY() - 0.2) && 
 			(m_y <= ((Player*)m_renderer.get()->getObjectByName("player1"))->getY() + 0.2))) {
 		this->setDir(-(this->dx), this->dy);
+		this->setDir(this->dx * 1.1, this->dy * 1.054484884);
 	}
 }
 
