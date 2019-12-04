@@ -4,15 +4,15 @@
 #include "Sprite.h"
 #include "Player.h"
 #include "Ball.h"
+#include <iostream>
+using namespace std;
 #include "../3rd-party/freeglut3/include/GL/freeglut.h"
 
-
-
-int main(int argc, char** argv)
+void PlayGame(int argc, char **argv)
 {
 	Renderer *renderer = new Renderer();
 	InputHandler inputHandler(*renderer);
-	
+
 	renderer->getPlayer1();
 	renderer->getPlayer2();
 
@@ -21,8 +21,8 @@ int main(int argc, char** argv)
 
 
 	//test objects
-	
-	
+
+
 	renderer->getPlayer1().setColor(255, 0, 0);
 	renderer->getPlayer1().setPosition(0.9, 0.6);
 	//pSprite1->setRotation(0.0);
@@ -48,7 +48,7 @@ int main(int argc, char** argv)
 	//pSprite3->draw();
 	renderer->addObject(pBall);
 
-	
+
 
 	while (1)
 	{
@@ -64,7 +64,46 @@ int main(int argc, char** argv)
 		glutPostRedisplay();
 		glutSwapBuffers();
 	}
-   
+}
+
+int main(int argc, char** argv)
+{
+	int m;
+	do {
+		
+		//Hacer menu 
+		cout << "__________________________________________________________________________________________________________		\n\n";
+		cout << "::::::::::: :::    ::: :::::::::  :::::::::   ::::::::        :::::::::   ::::::::  ::::    :::  ::::::::		\n";
+		cout << "    :+:     :+:    :+: :+:    :+: :+:    :+: :+:    :+:       :+:    :+: :+:    :+: :+:+:   :+: :+:    :+:		\n";
+		cout << "    +:+     +:+    +:+ +:+    +:+ +:+    +:+ +:+    +:+       +:+    +:+ +:+    +:+ :+:+:+  +:+ +:+			\n";
+		cout << "    +#+     +#+    +:+ +#++:++#:  +#++:++#+  +#+    +:+       +#++:++#+  +#+    +:+ +#+ +:+ +#+ :#:			\n";
+		cout << "    +#+     +#+    +#+ +#+    +#+ +#+    +#+ +#+    +#+       +#+        +#+    +#+ +#+  +#+#+# +#+   +#+#		\n";
+		cout << "    #+#     #+#    #+# #+#    #+# #+#    #+# #+#    #+#       #+#        #+#    #+# #+#   #+#+# #+#    #+#		\n";
+		cout << "    ###      ########  ###    ### #########   ########        ###         ########  ###    ####  ########		\n";
+		cout << "__________________________________________________________________________________________________________		\n";
+		cout << "\n Que quieres hacer?\n\n";
+		cout << "	1  Jugar\n";
+		cout << "	2  Creditos\n";
+		cout << "	3  Salir\n";
+
+		cin >> m;
+		//para el switch de jugar
+		switch (m) {
+		case 1:
+			PlayGame(argc, argv);
+			break;
+		case 2:
+
+			cout << "Jugar";
+			break;
+
+		}
+	} while (m != 3);
+
+	
+   //switch de jugar
+
+	//switch informacion 
 	return 0;
 
 }
