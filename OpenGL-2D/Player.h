@@ -8,8 +8,18 @@ public:
 	Player(string pName);
 	~Player();
 
+	
+
 	double getX();
 	double getY();
+
+	int points;
+
+	
+	void addPoint();
+	int getPoints();
+	void setY(double y);
+
 	void moveLeftPlayer1();
 	void moveRightPlayer1();
 	

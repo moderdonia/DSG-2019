@@ -5,6 +5,7 @@ using namespace std;
 Player::Player(string pName)
 {
 	this->name = pName;
+	this->points = 0;
 }
 
 
@@ -12,6 +13,14 @@ Player::~Player()
 {
 }
 
+
+void Player::addPoint() {
+	this->points++;
+}
+
+int Player::getPoints() {
+	return this->points;
+}
 
 void Player::draw()
 {
@@ -45,6 +54,10 @@ double Player::getY() {
 	return this->m_y;
 }
 
+void Player::setY(double y) {
+	this->m_y = y;
+}
+
 void Player::moveRightPlayer1() {
 	if (this->m_x < -0.41) {
 		this->m_x += 0.08;
@@ -61,7 +74,6 @@ void Player::moveRightPlayer2() {
 	if (this->m_x <= 0.9) {
 		this->m_x += 0.08;
 	}
-
 }
 
 void Player::moveLeftPlayer2() {
@@ -74,7 +86,6 @@ void Player::moveUp() {
 	if (this->m_y < 0.75) {
 		this->m_y += 0.08;
 	}
-	
 }
 
 void Player::moveDown() {
