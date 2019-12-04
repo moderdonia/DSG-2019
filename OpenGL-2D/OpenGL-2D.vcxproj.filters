@@ -23,6 +23,8 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="AnimatedSprite.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="targetver.h" />
@@ -48,6 +50,8 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Ball.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="AnimatedSprite.h" />
+    <ClInclude Include="TextureManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -59,5 +63,16 @@
     <Filter Include="Header Files">
       <UniqueIdentifier>{321f0698-5c88-44a3-9b9c-bbaa9b5da866}</UniqueIdentifier>
     </Filter>
+    <Filter Include="img">
+      <UniqueIdentifier>{7b2b8107-27f2-4a2d-b70a-d1d6b88f1f0c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="img\145.jpg">
+      <Filter>img</Filter>
+    </Image>
+    <Image Include="img\144.jpg">
+      <Filter>img</Filter>
+    </Image>
   </ItemGroup>
 </Project>

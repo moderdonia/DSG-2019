@@ -1,13 +1,17 @@
 #include "stdafx.h"
 #include "Renderer.h"
+#include "TextureManager.h"
 #include "Drawable.h"
 #include "../3rd-party/freeglut3/include/GL/freeglut.h"
 
 Renderer* Renderer::m_pRenderer = nullptr;
+TextureManager textureManager;
 
 Renderer::Renderer()
 {
+	
 	m_pRenderer = this;
+	
 }
 
 
@@ -30,7 +34,11 @@ void Renderer::initialize(int argc, char** argv)
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 	glutInitWindowSize(800, 800);
+	glutInitWindowPosition(400, 30);
+
+	
 	glutCreateWindow(argv[0]);
+	
 	
 	//OpenGL global initializations
 	glEnable(GL_DEPTH_TEST);
@@ -58,6 +66,7 @@ void Renderer::reshapeWindow(int w, int h)
 	//Reshape callback function
 	m_windowHeight = h;
 	m_windowWidth = w;
+	glutReshapeWindow(800, 800);
 	glViewport(0, 0, (GLsizei)w, (GLsizei)h);
 }
 

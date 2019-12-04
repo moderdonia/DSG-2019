@@ -1,10 +1,13 @@
 #include "Ball.h"
 #include "stdafx.h"
+#include "TextureManager.h"
 
 
 Ball::Ball(string pName)
 {
 	this->name = pName;
+	TextureManager::getInstance()->create2DTexture("img/144.jpg");
+	
 }
 
 
@@ -18,8 +21,11 @@ void Ball::updateBall() {
 
 void Ball::draw()
 {
+
 	//update
 //update
+
+	TextureManager::getInstance()->useTexture("img/144.jpg");
 	//1. Pass the object's color to OpenGL
 	glColor3f(this->m_r, this->m_g, this->m_b);
 	//2. Save the current transformation matrix
@@ -29,10 +35,15 @@ void Ball::draw()
 	//glRotatef(0, 0, 0, 0);
 	//glScalef(m_size, 1, 1);
 	//4. Draw the quad centered in [0,0] with coordinates: [-1,-1], [1,-1], [1,1] and [-1,1]
+	
 	glBegin(GL_QUADS);
+	
 	glVertex3f(-0.025, -0.025, -1);
+	
 	glVertex3f(0.025, -0.025, -1);
+	
 	glVertex3f(0.025, 0.025, -1);
+	
 	glVertex3f(-0.025, 0.025, -1);
 	glEnd();
 	//5. Restore the transformation matrix
