@@ -43,11 +43,21 @@ void Ball::draw()
 	Sprite::draw();
 }
 
-void Ball::move()
+int Ball::move()
 {
 	this->getCollision();
 	this->m_x += this->dx;
 	this->m_y += this->dy;
+	return this->checkGoal();
+}
+
+int Ball::checkGoal() {
+	//returns 1 if player 1 goal or 2 if player 2 goals
+	if (this->m_x>= 1) {
+		return this->PLAYER_1_GOAL;
+	}else if(this->m_x <= -1) {
+		return this->PLAYER_2_GOAL;
+	}
 }
 
 void Ball::getCollision() {

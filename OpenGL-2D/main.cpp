@@ -15,6 +15,10 @@ int main(int argc, char** argv)
 	Renderer renderer;
 	InputHandler inputHandler(renderer);
 	
+	int goals_player_1 = 0;
+	int goals_player_2 = 0;
+
+	int getGoal;
 
 	renderer.initialize(argc, argv);
 	inputHandler.initialize();
@@ -64,7 +68,7 @@ int main(int argc, char** argv)
 		x =  - (rand() % 7 + 6);
 		y = - (rand() % 7 + 6);
 	}
-	else if (a < 75 && a >= 50) 
+	else if (a < 75 && a >= 50)
 	{//x positive y negative
 		x = rand() % 7 + 6;
 		y = -(rand() % 7 + 6);
@@ -84,7 +88,17 @@ int main(int argc, char** argv)
 		//process queued events
 		glutMainLoopEvent();
 		
-		((Ball*)renderer.getObjectByName("ball"))->move();
+		getGoal = ((Ball*)renderer.getObjectByName("ball"))->move();
+
+		if (getGoal == 1) {
+			goals_player_1++;
+			((Ball*)renderer.getObjectByName("ball"))->setPosition(0, 0);
+		}
+		else if (getGoal == 2) {
+			goals_player_2++;
+			((Ball*)renderer.getObjectByName("ball"))->setPosition(0, 0);
+		}
+		
 		//RENDER////////////////////
 		////////////////////////////
 		glutPostRedisplay();
