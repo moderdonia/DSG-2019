@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include <iostream>
 #include "InputHandler.h"
 #include "Renderer.h"
 #include "Sprite.h"
@@ -7,18 +8,20 @@
 #include "../3rd-party/freeglut3/include/GL/freeglut.h"
 #include <chrono>
 #include <time.h>
+#include "Timer.h"
 
-
+using namespace std;
 
 int main(int argc, char** argv)
 {
 	Renderer renderer;
 	InputHandler inputHandler(renderer);
-	
 
 	renderer.initialize(argc, argv);
 	inputHandler.initialize();
 
+	Timer *timer = new Timer();
+	timer->start();
 
 	//test objects
 	Player *pPlayer= new Player("player2");
@@ -45,46 +48,39 @@ int main(int argc, char** argv)
 	//pBall->setRotation(0.0);
 	pBall->setSize(0.05);
 	pBall->setDepth(1.5);
+	pBall->initializeDirection();
 	//pSprite3->draw();
 	renderer.addObject(pBall);
 
-	//////////////////////////////////////////////
-	//RANDOM BALL INITIAL DIRECTION///////////////
-	srand((unsigned)time(0));
-	int a = rand() % 100;
-	float x, y;
+	bool stop = false;
+	
 
-	if (a >= 75) 
-	{//x and y positive
-		x = rand() % 7 + 6;
-		y = rand() % 7 + 6;
-	}
-	else if(a<75 && a>=50)
-	{//x and y negative
-		x =  - (rand() % 7 + 6);
-		y = - (rand() % 7 + 6);
-	}
-	else if (a < 75 && a >= 50) 
-	{//x positive y negative
-		x = rand() % 7 + 6;
-		y = -(rand() % 7 + 6);
-	}
-	else 
-	{//x negative y positive
-		x = -(rand() % 7 + 6);
-		y = rand() % 7 + 6;
-	}
-	//////////////////////////////////////////////
-	((Ball*)renderer.getObjectByName("ball"))->setDir(x * 0.00001, y * 0.00001);
-
-	while (1)
+	while (!stop)
 	{
 		//UPDATE////////////////////
 		////////////////////////////
 		//process queued events
 		glutMainLoopEvent();
 		
-		((Ball*)renderer.getObjectByName("ball"))->move();
+		if (pPlayer->getPoints() == 3){
+			stop = true;
+			cout << "Ha ganado el jugador 1";
+		}
+		if (pPlayer2->getPoints() == 3) {
+			stop = true;
+			cout << "Ha ganado el jugador 2";
+		}
+
+		if (pBall->hasBeenGoal) {
+			pBall->resetHitCounter();
+			pBall->setPosition(0, 0);
+			pBall->initializeDirection();
+			pBall->resetGoal();
+			cout << pPlayer->getPoints();
+			cout << pPlayer->getPoints();
+		}
+
+		//((Ball*)renderer.getObjectByName("ball"))->move();
 		//RENDER////////////////////
 		////////////////////////////
 		glutPostRedisplay();
@@ -94,4 +90,3 @@ int main(int argc, char** argv)
 	return 0;
 
 }
-
