@@ -9,11 +9,12 @@
 #include <chrono>
 #include <time.h>
 #include "Timer.h"
+#include <chrono>
+#include <thread>
+
 
 using namespace std;
-
-int main(int argc, char** argv)
-{
+string play(int argc, char** argv) {
 	Renderer renderer;
 	InputHandler inputHandler(renderer);
 
@@ -24,7 +25,7 @@ int main(int argc, char** argv)
 	timer->start();
 
 	//test objects
-	Player *pPlayer= new Player("player2");
+	Player *pPlayer = new Player("player2");
 	pPlayer->setColor(255, 0, 0);
 	pPlayer->setPosition(0.9, 0);
 	//pSprite1->setRotation(0.0);
@@ -53,7 +54,7 @@ int main(int argc, char** argv)
 	renderer.addObject(pBall);
 
 	bool stop = false;
-	
+	string victoria;
 
 	while (!stop)
 	{
@@ -61,14 +62,14 @@ int main(int argc, char** argv)
 		////////////////////////////
 		//process queued events
 		glutMainLoopEvent();
-		
-		if (pPlayer->getPoints() == 3){
+
+		if (pPlayer->getPoints() == 3) {
 			stop = true;
-			cout << "Ha ganado el jugador 2";
+			victoria = "Ha ganado el jugador 2";
 		}
 		if (pPlayer2->getPoints() == 3) {
 			stop = true;
-			cout << "Ha ganado el jugador 1";
+			victoria =  "Ha ganado el jugador 1";
 		}
 
 		if (pBall->hasBeenGoal) {
@@ -76,8 +77,6 @@ int main(int argc, char** argv)
 			pBall->setPosition(0, 0);
 			pBall->initializeDirection();
 			pBall->resetGoal();
-			cout << pPlayer->getPoints();
-			cout << pPlayer->getPoints();
 		}
 
 		//((Ball*)renderer.getObjectByName("ball"))->move();
@@ -86,7 +85,71 @@ int main(int argc, char** argv)
 		glutPostRedisplay();
 		glutSwapBuffers();
 	}
-   
-	return 0;
-
+	renderer.~Renderer();
+	return victoria;
 }
+int main(int argc, char** argv)
+{
+
+	int m;
+	bool aux = true;
+	bool aux2 = false;
+	do {
+		system("CLS");
+		//Hacer menu 
+		cout << "__________________________________________________________________________________________________________\n";
+		cout << "::::::::::: :::    ::: :::::::::  :::::::::   ::::::::        :::::::::   ::::::::  ::::    :::  ::::::::\n";
+		cout << "    :+:     :+:    :+: :+:    :+: :+:    :+: :+:    :+:       :+:    :+: :+:    :+: :+:+:   :+: :+:    :+:\n";
+		cout << "    +:+     +:+    +:+ +:+    +:+ +:+    +:+ +:+    +:+       +:+    +:+ +:+    +:+ :+:+:+  +:+ +:+\n";
+		cout << "    +#+     +#+    +:+ +#++:++#:  +#++:++#+  +#+    +:+       +#++:++#+  +#+    +:+ +#+ +:+ +#+ :#:\n";
+		cout << "    +#+     +#+    +#+ +#+    +#+ +#+    +#+ +#+    +#+       +#+        +#+    +#+ +#+  +#+#+# +#+   +#+#\n";
+		cout << "    #+#     #+#    #+# #+#    #+# #+#    #+# #+#    #+#       #+#        #+#    #+# #+#   #+#+# #+#    #+#\n";
+		cout << "    ###      ########  ###    ### #########   ########        ###         ########  ###    ####  ########\n";
+		cout << "__________________________________________________________________________________________________________		\n";
+		if (aux) {
+			cout << "\n Que quieres hacer?\n\n";
+			cout << "	1  Jugar\n";
+			cout << "	2  Creditos\n";
+			cout << "	3  Salir\n";
+		}
+		if (aux2) {
+			cout << "Videojuego creado para la asignatura Desarrollo de Sistemas Graficos\n";
+			cout << "Por Unai Gonzalez, Daniel Hormilla, Arkaitz Merino e Iker Nicolas\n";
+			cout << "Agradecimientos a nuestras familias\n";
+			cout << "GORA MODERDONIA ASKATUTA\n";
+			cout << "Pulsa 0 para volver al Menu\n";
+
+		}
+
+
+		cin >> m;
+		//para el switch de jugar
+		switch (m) {
+		case 0:
+			aux = true;
+			aux2 = false;
+			break;
+
+		case 1:
+			system("CLS");
+			cout << play(argc, argv);
+			this_thread::sleep_for(std::chrono::milliseconds(5000));
+			break;
+		case 2:
+
+			aux = false;
+			aux2 = true;
+			break;
+
+		}
+		
+	} while (m != 3);
+
+
+	//switch de jugar
+
+	 //switch informacion 
+
+	
+}
+

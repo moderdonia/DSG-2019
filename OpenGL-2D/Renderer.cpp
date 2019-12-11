@@ -13,8 +13,11 @@ Renderer::Renderer()
 
 Renderer::~Renderer()
 {
+
 	for (int i = 0; i < m_objects2D.size(); i++)
 		delete m_objects2D[i];
+
+	
 }
 
 Renderer* Renderer::get()
