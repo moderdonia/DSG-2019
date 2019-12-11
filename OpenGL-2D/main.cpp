@@ -24,23 +24,23 @@ int main(int argc, char** argv)
 	timer->start();
 
 	//test objects
-	Player *pPlayer= new Player("player2");
-	pPlayer->setColor(255, 0, 0);
-	pPlayer->setPosition(0.9, 0);
+	Player *pPlayer2= new Player("player2");
+	pPlayer2->setColor(255, 0, 0);
+	pPlayer2->setPosition(0.9, 0);
 	//pSprite1->setRotation(0.0);
 	//pSprite1->setSize(1);
-	pPlayer->setDepth(1.5);
+	pPlayer2->setDepth(1.5);
 	//pSprite1->draw();
-	renderer.addObject(pPlayer);
+	renderer.addObject(pPlayer2);
 
-	Player *pPlayer2 = new Player("player1");
-	pPlayer2->setColor(0, 255, 0);
-	pPlayer2->setPosition(-0.9, 0);
+	Player *pPlayer1 = new Player("player1");
+	pPlayer1->setColor(0, 255, 0);
+	pPlayer1->setPosition(-0.9, 0);
 	//pSprite2->setRotation(0.0);
 	//pSprite2->setSize(1);
-	pPlayer2->setDepth(1.5);
+	pPlayer1->setDepth(1.5);
 	//pSprite2->draw();
-	renderer.addObject(pPlayer2);
+	renderer.addObject(pPlayer1);
 
 	Ball *pBall = new Ball("ball");
 	pBall->setColor(255, 255, 0);
@@ -62,13 +62,13 @@ int main(int argc, char** argv)
 		//process queued events
 		glutMainLoopEvent();
 		
-		if (pPlayer->getPoints() == 3){
-			stop = true;
-			cout << "Ha ganado el jugador 1";
-		}
-		if (pPlayer2->getPoints() == 3) {
+		if (pPlayer2->getPoints() == 3){
 			stop = true;
 			cout << "Ha ganado el jugador 2";
+		}
+		if (pPlayer1->getPoints() == 3) {
+			stop = true;
+			cout << "Ha ganado el jugador 1";
 		}
 
 		if (pBall->hasBeenGoal) {
@@ -76,8 +76,8 @@ int main(int argc, char** argv)
 			pBall->setPosition(0, 0);
 			pBall->initializeDirection();
 			pBall->resetGoal();
-			cout << pPlayer->getPoints();
-			cout << pPlayer->getPoints();
+			cout << pPlayer1->getPoints();
+			cout << pPlayer2->getPoints();
 		}
 
 		//((Ball*)renderer.getObjectByName("ball"))->move();
