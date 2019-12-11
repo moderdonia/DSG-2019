@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "Ball.h"
 #include <iostream>
+#include <stdlib.h>
 using namespace std;
 #include "../3rd-party/freeglut3/include/GL/freeglut.h"
 
@@ -69,32 +70,62 @@ void PlayGame(int argc, char **argv)
 int main(int argc, char** argv)
 {
 	int m;
+	bool aux = true;
+	bool aux2 = false;
 	do {
-		
+		system("CLS");
 		//Hacer menu 
-		cout << "__________________________________________________________________________________________________________		\n\n";
-		cout << "::::::::::: :::    ::: :::::::::  :::::::::   ::::::::        :::::::::   ::::::::  ::::    :::  ::::::::		\n";
-		cout << "    :+:     :+:    :+: :+:    :+: :+:    :+: :+:    :+:       :+:    :+: :+:    :+: :+:+:   :+: :+:    :+:		\n";
-		cout << "    +:+     +:+    +:+ +:+    +:+ +:+    +:+ +:+    +:+       +:+    +:+ +:+    +:+ :+:+:+  +:+ +:+			\n";
-		cout << "    +#+     +#+    +:+ +#++:++#:  +#++:++#+  +#+    +:+       +#++:++#+  +#+    +:+ +#+ +:+ +#+ :#:			\n";
-		cout << "    +#+     +#+    +#+ +#+    +#+ +#+    +#+ +#+    +#+       +#+        +#+    +#+ +#+  +#+#+# +#+   +#+#		\n";
-		cout << "    #+#     #+#    #+# #+#    #+# #+#    #+# #+#    #+#       #+#        #+#    #+# #+#   #+#+# #+#    #+#		\n";
-		cout << "    ###      ########  ###    ### #########   ########        ###         ########  ###    ####  ########		\n";
+		cout << "__________________________________________________________________________________________________________\n";
+		cout << "::::::::::: :::    ::: :::::::::  :::::::::   ::::::::        :::::::::   ::::::::  ::::    :::  ::::::::\n";
+		cout << "    :+:     :+:    :+: :+:    :+: :+:    :+: :+:    :+:       :+:    :+: :+:    :+: :+:+:   :+: :+:    :+:\n";
+		cout << "    +:+     +:+    +:+ +:+    +:+ +:+    +:+ +:+    +:+       +:+    +:+ +:+    +:+ :+:+:+  +:+ +:+\n";
+		cout << "    +#+     +#+    +:+ +#++:++#:  +#++:++#+  +#+    +:+       +#++:++#+  +#+    +:+ +#+ +:+ +#+ :#:\n";
+		cout << "    +#+     +#+    +#+ +#+    +#+ +#+    +#+ +#+    +#+       +#+        +#+    +#+ +#+  +#+#+# +#+   +#+#\n";
+		cout << "    #+#     #+#    #+# #+#    #+# #+#    #+# #+#    #+#       #+#        #+#    #+# #+#   #+#+# #+#    #+#\n";
+		cout << "    ###      ########  ###    ### #########   ########        ###         ########  ###    ####  ########\n";
 		cout << "__________________________________________________________________________________________________________		\n";
-		cout << "\n Que quieres hacer?\n\n";
-		cout << "	1  Jugar\n";
-		cout << "	2  Creditos\n";
-		cout << "	3  Salir\n";
-
+		if (aux) {
+			cout << "\n Que quieres hacer?\n\n";
+			cout << "	1  Jugar\n";
+			cout << "	2  Creditos\n";
+			cout << "	3  Salir\n";
+		}
+		if (aux2) {
+			cout << "Videojuego creado para la asignatura Desarrollo de Sistemas Gráficos\n";
+			cout << "Por Unai Gonzalez, Daniel Hormilla, Arkaitz Merino e Iker Nicolas\n";
+			cout << "Agradecimientos a nuestras familias\n";
+			cout << "GORA MODERDONIA ASKATUTA\n";
+			cout << "Pulsa 0 para volver al Menu\n";
+			
+		}
+		if (aux) {
+			aux = false;
+		}
+		else {
+			aux = true;
+		}
+		if (aux2) {
+			aux2 = false;
+		}
+		else {
+			aux2 = true;
+		}
+		
 		cin >> m;
 		//para el switch de jugar
 		switch (m) {
+		case 0:
+			aux = true;
+			aux2 = false;
+			break;
+
 		case 1:
 			PlayGame(argc, argv);
 			break;
 		case 2:
-
-			cout << "Jugar";
+			
+			aux = false;
+			aux2 = true;
 			break;
 
 		}
