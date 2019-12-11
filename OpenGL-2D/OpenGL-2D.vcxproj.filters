@@ -25,6 +25,7 @@
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="AnimatedSprite.cpp" />
     <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="Panel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="targetver.h" />
@@ -52,6 +53,7 @@
     <ClInclude Include="Timer.h" />
     <ClInclude Include="AnimatedSprite.h" />
     <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="Panel.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -71,7 +73,10 @@
     <Image Include="img\145.jpg">
       <Filter>img</Filter>
     </Image>
-    <Image Include="img\144.jpg">
+    <Image Include="img\1200px-Flag_of_Mexico.svg.png">
+      <Filter>img</Filter>
+    </Image>
+    <Image Include="img\144.png">
       <Filter>img</Filter>
     </Image>
   </ItemGroup>

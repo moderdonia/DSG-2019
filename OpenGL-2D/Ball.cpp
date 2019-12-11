@@ -5,8 +5,9 @@
 
 Ball::Ball(string pName)
 {
+	TextureManager::getInstance()->create2DTexture("img/ball.png");
 	this->name = pName;
-	TextureManager::getInstance()->create2DTexture("img/144.jpg");
+	
 	
 }
 
@@ -25,7 +26,7 @@ void Ball::draw()
 	//update
 //update
 
-	TextureManager::getInstance()->useTexture("img/144.jpg");
+	TextureManager::getInstance()->useTexture("img/ball.png");
 	//1. Pass the object's color to OpenGL
 	glColor3f(this->m_r, this->m_g, this->m_b);
 	//2. Save the current transformation matrix
@@ -37,14 +38,19 @@ void Ball::draw()
 	//4. Draw the quad centered in [0,0] with coordinates: [-1,-1], [1,-1], [1,1] and [-1,1]
 	
 	glBegin(GL_QUADS);
-	
+
+	glTexCoord2f(0, 0);
 	glVertex3f(-0.025, -0.025, -1);
-	
+
+	glTexCoord2f(1, 0);
 	glVertex3f(0.025, -0.025, -1);
 	
+	glTexCoord2f(1, 1);
 	glVertex3f(0.025, 0.025, -1);
-	
+
+	glTexCoord2f(0, 1);
 	glVertex3f(-0.025, 0.025, -1);
+
 	glEnd();
 	//5. Restore the transformation matrix
 	glPopMatrix();

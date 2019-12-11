@@ -38,7 +38,7 @@ int main(int argc, char** argv)
 	renderer.addObject(pPlayer2);
 
 	Ball *pBall = new Ball("ball");
-	pBall->setColor(255, 255, 0);
+	pBall->setColor(255, 255, 255);
 	pBall->setPosition(0, 0);
 	//pBall->setRotation(0.0);
 	pBall->setSize(0.05);
