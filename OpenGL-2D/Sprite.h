@@ -30,6 +30,10 @@ public:
 	void setRotation(double angle);
 	void setSize(double size);
 
+	double getPositionX();
+
+	double getPositionY();
+
 	string getName();
 };
 
