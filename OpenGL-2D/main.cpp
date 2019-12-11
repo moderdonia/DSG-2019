@@ -98,18 +98,7 @@ int main(int argc, char** argv)
 			cout << "Pulsa 0 para volver al Menu\n";
 			
 		}
-		if (aux) {
-			aux = false;
-		}
-		else {
-			aux = true;
-		}
-		if (aux2) {
-			aux2 = false;
-		}
-		else {
-			aux2 = true;
-		}
+		
 		
 		cin >> m;
 		//para el switch de jugar
