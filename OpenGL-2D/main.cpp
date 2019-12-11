@@ -52,8 +52,37 @@ int main(int argc, char** argv)
 	//pSprite3->draw();
 	renderer.addObject(pBall);
 
+
 	bool stop = false;
-	
+
+	//////////////////////////////////////////////
+	//RANDOM BALL INITIAL DIRECTION///////////////
+	srand((unsigned)time(0));
+	int a = rand() % 100;
+	float x, y;
+
+	if (a >= 75) 
+	{//x and y positive
+		x = rand() % 7 + 6;
+		y = rand() % 7 + 6;
+	}
+	else if(a<75 && a>=50)
+	{//x and y negative
+		x =  - (rand() % 7 + 6);
+		y = - (rand() % 7 + 6);
+	}
+	else if (a < 75 && a >= 50) 
+	{//x positive y negative
+		x = rand() % 7 + 6;
+		y = -(rand() % 7 + 6);
+	}
+	else 
+	{//x negative y positive
+		x = -(rand() % 7 + 6);
+		y = rand() % 7 + 6;
+	}
+	//////////////////////////////////////////////
+	((Ball*)renderer.getObjectByName("ball"))->setDir(x * 0.00001, y * 0.00001);
 
 	while (!stop)
 	{
@@ -62,6 +91,7 @@ int main(int argc, char** argv)
 		//process queued events
 		glutMainLoopEvent();
 		
+
 		if (pPlayer2->getPoints() == 3){
 			stop = true;
 			cout << "Ha ganado el jugador 2";
@@ -81,6 +111,9 @@ int main(int argc, char** argv)
 		}
 
 		//((Ball*)renderer.getObjectByName("ball"))->move();
+
+		((Ball*)renderer.getObjectByName("ball"))->move();
+
 		//RENDER////////////////////
 		////////////////////////////
 		glutPostRedisplay();
