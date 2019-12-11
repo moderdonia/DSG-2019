@@ -64,11 +64,11 @@ int main(int argc, char** argv)
 		
 		if (pPlayer->getPoints() == 3){
 			stop = true;
-			cout << "Ha ganado el jugador 1";
+			cout << "Ha ganado el jugador 2";
 		}
 		if (pPlayer2->getPoints() == 3) {
 			stop = true;
-			cout << "Ha ganado el jugador 2";
+			cout << "Ha ganado el jugador 1";
 		}
 
 		if (pBall->hasBeenGoal) {
