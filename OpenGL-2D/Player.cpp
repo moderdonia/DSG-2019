@@ -1,11 +1,16 @@
 #include "Player.h"
 #include "stdafx.h"
+#include "TextureManager.h"
+
 using namespace std;
 
 Player::Player(string pName)
 {
 	this->name = pName;
 	this->points = 0;
+
+	TextureManager::getInstance()->create2DTexture("img/españa.png");
+
 }
 
 
@@ -24,6 +29,7 @@ int Player::getPoints() {
 
 void Player::draw()
 {
+	TextureManager::getInstance()->useTexture("img/españa.png");
 	//update
 	//1. Pass the object's color to OpenGL
 	glColor3f(this->m_r, this->m_g, this->m_b);
@@ -35,9 +41,13 @@ void Player::draw()
 	glScalef(m_size, 1, 1);
 	//4. Draw the quad centered in [0,0] with coordinates: [-1,-1], [1,-1], [1,1] and [-1,1]
 	glBegin(GL_QUADS);
+	glTexCoord2f(1, 1);
 	glVertex3f(-0.025, -0.2, -1);
+	glTexCoord2f(0, 1);
 	glVertex3f(0.025, -0.2, -1);
+	glTexCoord2f(0, 0);
 	glVertex3f(0.025, 0.2, -1);
+	glTexCoord2f(1, 0);
 	glVertex3f(-0.025, 0.2, -1);
 	glEnd();
 	//5. Restore the transformation matrix

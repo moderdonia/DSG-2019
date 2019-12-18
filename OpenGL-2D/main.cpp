@@ -35,7 +35,7 @@ string play(int argc, char** argv) {
 
 	//test objects
 	Player *pPlayer = new Player("player2");
-	pPlayer->setColor(255, 0, 0);
+	pPlayer->setColor(255, 255, 255);
 	pPlayer->setPosition(0.9, 0);
 	//pSprite1->setRotation(0.0);
 	//pSprite1->setSize(1);
@@ -44,7 +44,7 @@ string play(int argc, char** argv) {
 	renderer.addObject(pPlayer);
 
 	Player *pPlayer2 = new Player("player1");
-	pPlayer2->setColor(0, 255, 0);
+	pPlayer2->setColor(255, 255, 255);
 	pPlayer2->setPosition(-0.9, 0);
 	//pSprite2->setRotation(0.0);
 	//pSprite2->setSize(1);
@@ -53,7 +53,7 @@ string play(int argc, char** argv) {
 	renderer.addObject(pPlayer2);
 
 	Ball *pBall = new Ball("ball");
-	pBall->setColor(255, 255, 0);
+	pBall->setColor(255, 255, 255);
 	pBall->setPosition(0, 0);
 	//pBall->setRotation(0.0);
 	pBall->setSize(0.05);
@@ -65,6 +65,8 @@ string play(int argc, char** argv) {
 	bool stop = false;
 	string victoria;
 	contador = "0 : 0" ;
+
+
 	
 	while (!stop)
 	{
@@ -93,6 +95,8 @@ string play(int argc, char** argv) {
 			pBall->setPosition(0, 0);
 			pBall->initializeDirection();
 			pBall->resetGoal();
+			Beep(523, 200);
+			Beep(784, 500);
 		}
 
 		//((Ball*)renderer.getObjectByName("ball"))->move();
@@ -151,6 +155,11 @@ int main(int argc, char** argv)
 		case 1:
 			system("CLS");
 			cout << play(argc, argv);
+			Beep(523, 200);  // 523 hertz (C5) for 500 milliseconds
+			Beep(587, 200);
+			Beep(659, 200);
+			Beep(698, 200);
+			Beep(784, 200);
 			this_thread::sleep_for(std::chrono::milliseconds(5000));
 			break;
 		case 2:

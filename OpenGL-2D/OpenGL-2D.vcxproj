@@ -54,6 +54,7 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AnimatedSprite.cpp" />
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Sprite.cpp" />
@@ -62,10 +63,12 @@
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Text.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AnimatedSprite.h" />
     <ClInclude Include="Ball.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Sprite.h" />
@@ -75,6 +78,7 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Text.h" />
+    <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>
@@ -85,6 +89,30 @@
     <ProjectReference Include="..\3rd-party\freeglut3\freeglut3.vcxproj">
       <Project>{5a98782e-7027-46f9-91e1-e1ede1e14bf4}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\3rd-party\glew-2.0.0\glew-2.0.0.vcxproj">
+      <Project>{c474717f-f37a-4201-ae32-871219c77803}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\3rd-party\SOIL\projects\VC9\SOIL.vcxproj">
+      <Project>{c32fb2b4-500c-43cd-a099-eecce079d3f1}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="img\1200px-Flag_of_Mexico.svg.png" />
+    <Image Include="img\144.png" />
+    <Image Include="img\145.jpg" />
+    <Image Include="img\alien-01.png" />
+    <Image Include="img\alien-02.png" />
+    <Image Include="img\ball.png" />
+    <Image Include="img\bandera.png" />
+    <Image Include="img\españa.png" />
+    <Image Include="img\fighter-01.png" />
+    <Image Include="img\fighter-02.png" />
+    <Image Include="img\fire-animation-1.png" />
+    <Image Include="img\fire-animation-2.png" />
+    <Image Include="img\globo.png" />
+    <Image Include="img\isa.png" />
+    <Image Include="img\ladrillo.png" />
+    <Image Include="img\maderita.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
 </Project>

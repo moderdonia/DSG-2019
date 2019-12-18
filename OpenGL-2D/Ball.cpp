@@ -1,6 +1,7 @@
 #include "Ball.h"
 #include "stdafx.h"
 #include "Player.h"
+#include "TextureManager.h"
 
 Renderer m_renderer;
 
@@ -9,6 +10,7 @@ Ball::Ball(string pName)
 	this->name = pName;
 	this->hasBeenGoal = false;
 	m_timer.start();
+	TextureManager::getInstance()->create2DTexture("img/ball.png");
 }
 
 
@@ -80,6 +82,7 @@ void Ball::setInitialDirection(int dir)
 
 void Ball::draw()
 {
+	TextureManager::getInstance()->useTexture("img/ball.png");
 	//update
 //update
 	//1. Pass the object's color to OpenGL
@@ -92,9 +95,13 @@ void Ball::draw()
 	//glScalef(m_size, 1, 1);
 	//4. Draw the quad centered in [0,0] with coordinates: [-1,-1], [1,-1], [1,1] and [-1,1]
 	glBegin(GL_QUADS);
+	glTexCoord2f(1, 1);
 	glVertex3f(-0.025, -0.025, -1);
+	glTexCoord2f(0, 1);
 	glVertex3f(0.025, -0.025, -1);
+	glTexCoord2f(0, 0);
 	glVertex3f(0.025, 0.025, -1);
+	glTexCoord2f(1, 0);
 	glVertex3f(-0.025, 0.025, -1);
 	glEnd();
 	//5. Restore the transformation matrix
@@ -129,6 +136,7 @@ void Ball::getCollision() {
 		(m_y >= ((Player*)m_renderer.get()->getObjectByName("player2"))->getY() - 0.2) &&
 		(m_y <= ((Player*)m_renderer.get()->getObjectByName("player2"))->getY() + 0.2))))
 	{
+		Beep(900, 50);
 		this->setDir(-(this->dx), this->dy);
 		this->setDir(this->dx * 1.1, this->dy * 1.054484884);
 		this->hit_counter++;
@@ -137,6 +145,7 @@ void Ball::getCollision() {
 			(m_y >= ((Player*)m_renderer.get()->getObjectByName("player1"))->getY() - 0.2) && 
 			(m_y <= ((Player*)m_renderer.get()->getObjectByName("player1"))->getY() + 0.2)))) 
 	{
+		Beep(900, 50);
 		this->setDir(-(this->dx), this->dy);
 		this->setDir(this->dx * 1.1, this->dy * 1.054484884);
 		this->hit_counter++;

@@ -23,6 +23,8 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="AnimatedSprite.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="targetver.h" />
@@ -48,6 +50,8 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Ball.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="AnimatedSprite.h" />
+    <ClInclude Include="TextureManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -59,5 +63,58 @@
     <Filter Include="Header Files">
       <UniqueIdentifier>{321f0698-5c88-44a3-9b9c-bbaa9b5da866}</UniqueIdentifier>
     </Filter>
+    <Filter Include="img">
+      <UniqueIdentifier>{ae9a70da-c09a-4ebc-a4fd-8b385e195073}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="img\144.png">
+      <Filter>img</Filter>
+    </Image>
+    <Image Include="img\145.jpg">
+      <Filter>img</Filter>
+    </Image>
+    <Image Include="img\1200px-Flag_of_Mexico.svg.png">
+      <Filter>img</Filter>
+    </Image>
+    <Image Include="img\alien-01.png">
+      <Filter>img</Filter>
+    </Image>
+    <Image Include="img\alien-02.png">
+      <Filter>img</Filter>
+    </Image>
+    <Image Include="img\ball.png">
+      <Filter>img</Filter>
+    </Image>
+    <Image Include="img\bandera.png">
+      <Filter>img</Filter>
+    </Image>
+    <Image Include="img\españa.png">
+      <Filter>img</Filter>
+    </Image>
+    <Image Include="img\fighter-01.png">
+      <Filter>img</Filter>
+    </Image>
+    <Image Include="img\fighter-02.png">
+      <Filter>img</Filter>
+    </Image>
+    <Image Include="img\fire-animation-1.png">
+      <Filter>img</Filter>
+    </Image>
+    <Image Include="img\fire-animation-2.png">
+      <Filter>img</Filter>
+    </Image>
+    <Image Include="img\globo.png">
+      <Filter>img</Filter>
+    </Image>
+    <Image Include="img\isa.png">
+      <Filter>img</Filter>
+    </Image>
+    <Image Include="img\ladrillo.png">
+      <Filter>img</Filter>
+    </Image>
+    <Image Include="img\maderita.png">
+      <Filter>img</Filter>
+    </Image>
   </ItemGroup>
 </Project>

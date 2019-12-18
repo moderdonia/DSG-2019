@@ -1,5 +1,6 @@
 #pragma once
 #include "./Player.h"
+#include "TextureManager.h"
 
 class Drawable;
 #include <vector>
@@ -10,6 +11,7 @@ class Renderer
 	static Renderer* m_pRenderer;
 	int m_windowWidth = 0, m_windowHeight = 0;
 
+	TextureManager textureManager;
 
 	vector <Drawable*> m_objects2D;
 
