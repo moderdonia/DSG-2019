@@ -102,6 +102,9 @@
     <Image Include="img\1200px-Flag_of_Mexico.svg.png" />
     <Image Include="img\144.png" />
     <Image Include="img\145.jpg" />
+    <Image Include="img\españa.png" />
+    <Image Include="img\globo.png" />
+    <Image Include="img\maderita.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
 </Project>

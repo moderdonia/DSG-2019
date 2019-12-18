@@ -21,7 +21,7 @@ void Player::draw()
 	//update
 	TextureManager::getInstance()->useTexture("img/españa.png");
 	//1. Pass the object's color to OpenGL
-	//glColor3f(this->m_r, this->m_g, this->m_b);
+	glColor3f(this->m_r, this->m_g, this->m_b);
 	//2. Save the current transformation matrix
 	glPushMatrix();
 	//3. Set the transformation matrix of the quad using position, size and angle
@@ -30,13 +30,13 @@ void Player::draw()
 	glScalef(m_size, 1, 1);
 	//4. Draw the quad centered in [0,0] with coordinates: [-1,-1], [1,-1], [1,1] and [-1,1]
 	glBegin(GL_QUADS);
-	glTexCoord2f(0, 0);
-	glVertex3f(-0.025, -0.2, -1);
-	glTexCoord2f(1, 0);
-	glVertex3f(0.025, -0.2, -1);
 	glTexCoord2f(1, 1);
-	glVertex3f(0.025, 0.2, -1);
+	glVertex3f(-0.025, -0.2, -1);
 	glTexCoord2f(0, 1);
+	glVertex3f(0.025, -0.2, -1);
+	glTexCoord2f(0, 0);
+	glVertex3f(0.025, 0.2, -1);
+	glTexCoord2f(1, 0);
 	glVertex3f(-0.025, 0.2, -1);
 	glEnd();
 	//5. Restore the transformation matrix

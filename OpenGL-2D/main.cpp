@@ -20,8 +20,8 @@ int main(int argc, char** argv)
 
 	//test objects
 	Player *pPlayer= new Player("player1");
-	pPlayer->setColor(255, 0, 0);
-	pPlayer->setPosition(0.9, 0);
+	pPlayer->setColor(255,255,255);
+	pPlayer->setPosition(0.9,0);
 	//pSprite1->setRotation(0.0);
 	//pSprite1->setSize(1);
 	pPlayer->setDepth(1.5);
@@ -29,7 +29,7 @@ int main(int argc, char** argv)
 	renderer.addObject(pPlayer);
 
 	Player *pPlayer2 = new Player("player2");
-	pPlayer2->setColor(0, 255, 0);
+    pPlayer2->setColor(255, 255, 0);
 	pPlayer2->setPosition(-0.9, 0);
 	//pSprite2->setRotation(0.0);
 	//pSprite2->setSize(1);
@@ -38,7 +38,7 @@ int main(int argc, char** argv)
 	renderer.addObject(pPlayer2);
 
 	Ball *pBall = new Ball("ball");
-	pBall->setColor(255, 255, 255);
+	pBall->setColor(255,255,255);
 	pBall->setPosition(0, 0);
 	//pBall->setRotation(0.0);
 	pBall->setSize(0.05);

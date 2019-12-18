@@ -8,9 +8,7 @@ Renderer* Renderer::m_pRenderer = nullptr;
 
 Renderer::Renderer()
 {
-	TextureManager::getInstance()->create2DTexture("img/144.png");
 	m_pRenderer = this;
-	
 }
 
 
@@ -89,22 +87,8 @@ void Renderer::drawScene()
 {
 	//clean the backbuffer
 	
-	TextureManager::getInstance()->useTexture("img/144.png");
 
-
-	glBegin(GL_QUADS);
-
-	glTexCoord2f(0, 0);
-	glVertex3f(-1, -1, -1.5);
-
-	glTexCoord2f(1, 0);
-	glVertex3f(1, -1, -1.5);
-
-	glTexCoord2f(1, 1);
-	glVertex3f(1, 1, -1.5);
-
-	glTexCoord2f(0, 1);
-	glVertex3f(-1, 1, -1.5);
+	
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	//TextureManager::getInstance()->useTexture("img/144.png");

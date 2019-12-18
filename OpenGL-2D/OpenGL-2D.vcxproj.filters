@@ -79,5 +79,14 @@
     <Image Include="img\144.png">
       <Filter>img</Filter>
     </Image>
+    <Image Include="img\maderita.png">
+      <Filter>img</Filter>
+    </Image>
+    <Image Include="img\globo.png">
+      <Filter>img</Filter>
+    </Image>
+    <Image Include="img\españa.png">
+      <Filter>img</Filter>
+    </Image>
   </ItemGroup>
 </Project>
