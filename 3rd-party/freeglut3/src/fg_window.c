@@ -243,8 +243,10 @@ void FGAPIENTRY glutDestroyWindow( int windowID )
     {
         fgExecutionState ExecState = fgState.ExecState;
         fgAddToWindowDestroyList( window );
-        fgState.ExecState = ExecState;
+		fgState.ExecState = ExecState;
+		
     }
+	fgCloseWindow(window);
 }
 
 /*

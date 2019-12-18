@@ -4,11 +4,18 @@
 #include "../3rd-party/freeglut3/include/GL/freeglut.h"
 
 
+string Text2D::getName()
+{
+	return m_name;
+}
+
 Text2D::Text2D(string name, double x, double y, double depth)
 {
 	m_x = x;
 	m_y = y;
 	m_depth = depth;
+	m_name = name;
+	
 }
 
 

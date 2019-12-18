@@ -17,8 +17,10 @@ class Renderer
 public:
 	Renderer();
 	~Renderer();
-
+	int idWin;
 	void initialize(int argc, char** argv);
+
+	void destroyW();
 
 	static Renderer* get(); //this method returns the only instance to the renderer. Needs to be called after the constructor
 

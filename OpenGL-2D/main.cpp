@@ -9,6 +9,7 @@
 #include <chrono>
 #include <time.h>
 #include "Timer.h"
+#include "Text.h"
 #include <chrono>
 #include <thread>
 
@@ -17,12 +18,20 @@ using namespace std;
 string play(int argc, char** argv) {
 	Renderer renderer;
 	InputHandler inputHandler(renderer);
-
+	string contador = "";
 	renderer.initialize(argc, argv);
 	inputHandler.initialize();
 
 	Timer *timer = new Timer();
 	timer->start();
+
+	Text2D *text = new Text2D("Contador",-0.05,0.7,1);
+	text->setColor(255, 255, 255);
+
+	//pSprite1->setRotation(0.0);
+	//pSprite1->setSize(1);
+	//pSprite1->draw();
+	renderer.addObject(text);
 
 	//test objects
 	Player *pPlayer = new Player("player2");
@@ -55,24 +64,31 @@ string play(int argc, char** argv) {
 
 	bool stop = false;
 	string victoria;
-
+	contador = "0 : 0" ;
+	
 	while (!stop)
 	{
 		//UPDATE////////////////////
 		////////////////////////////
 		//process queued events
 		glutMainLoopEvent();
+		text->setText(contador);
 
 		if (pPlayer->getPoints() == 3) {
 			stop = true;
 			victoria = "Ha ganado el jugador 2";
+			renderer.destroyW();	
+			
 		}
 		if (pPlayer2->getPoints() == 3) {
 			stop = true;
 			victoria =  "Ha ganado el jugador 1";
+			renderer.destroyW();
+			
 		}
 
 		if (pBall->hasBeenGoal) {
+			contador = to_string(pPlayer2->getPoints()) +  " : " + to_string(pPlayer->getPoints());
 			pBall->resetHitCounter();
 			pBall->setPosition(0, 0);
 			pBall->initializeDirection();
@@ -82,10 +98,12 @@ string play(int argc, char** argv) {
 		//((Ball*)renderer.getObjectByName("ball"))->move();
 		//RENDER////////////////////
 		////////////////////////////
-		glutPostRedisplay();
-		glutSwapBuffers();
+		if (!stop) {
+			glutPostRedisplay();
+			glutSwapBuffers();
+		}
 	}
-	renderer.~Renderer();
+	//renderer.~Renderer();
 	return victoria;
 }
 int main(int argc, char** argv)

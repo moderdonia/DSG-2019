@@ -10,8 +10,9 @@ class Text2D: public Drawable
 	double m_x, m_y, m_depth;
 	double m_r, m_g, m_b;
 	string m_text;
+	string m_name;
 public:
-
+	virtual string getName();
 	Text2D(string name,double x, double y, double depth);
 	virtual ~Text2D();
 

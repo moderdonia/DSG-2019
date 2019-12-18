@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Renderer.h"
 #include "Drawable.h"
+#include <iostream>
 #include "../3rd-party/freeglut3/include/GL/freeglut.h"
 
 Renderer* Renderer::m_pRenderer = nullptr;
@@ -33,8 +34,9 @@ void Renderer::initialize(int argc, char** argv)
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 	glutInitWindowSize(800, 800);
-	glutCreateWindow(argv[0]);
-	
+	idWin = glutCreateWindow(argv[0]);
+	glutSetWindowTitle("Turbo Pong");
+
 	//OpenGL global initializations
 	glEnable(GL_DEPTH_TEST);
 
@@ -42,7 +44,10 @@ void Renderer::initialize(int argc, char** argv)
 	glutDisplayFunc(__drawScene);
 	glutReshapeFunc(__reshapeWindow);
 }
-
+void Renderer::destroyW()
+{
+	glutExit();
+}
 void Renderer::set2DMatrix()
 {
 	//set projection matrix
